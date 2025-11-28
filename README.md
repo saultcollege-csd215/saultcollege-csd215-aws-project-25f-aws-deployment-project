@@ -24,7 +24,7 @@ The goal of this project is to practice
 2. Create a branch off of `main` and do your work for this project in that branch.
 2. Ensure you are in the virtual Python evironment (you should see `(.venv)` at the start of your terminal prompt)
 
-   > If not, run `source ./venv/bin/activate` in the terminal to activate it. You may need to do this each time you load the Devcontainer.
+   > If not, run `source .venv/bin/activate` in the terminal to activate it. You may need to do this each time you load the Devcontainer.
 2. Log in to AWS Academy and open the AWS Academy Learner Lab environment
 3. Click the "Start Lab" button and wait for the AWS environment to initialize
 4. Open the "AWS Details" button, then the "Show" button beside "AWS CLI"
