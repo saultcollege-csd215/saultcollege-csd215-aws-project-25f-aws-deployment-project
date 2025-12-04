@@ -1,8 +1,3 @@
-----------------------------------------------------------------
-DynamoDB Table Description
-Table name: dice-rolls
-Output from: aws dynamodb describe-table --table-name dice-rolls
------------------------------------------------------------------
 {
     "Table": {
         "AttributeDefinitions": [

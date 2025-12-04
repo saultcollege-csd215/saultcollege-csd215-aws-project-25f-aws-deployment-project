@@ -1,8 +1,9 @@
 #!/bin/bash
 
 # --- Configuration ---
-LAMBDA_NAME="<the name of your lambda function>"
+LAMBDA_NAME="csd215-dice-lambda-thiago"
 REGION="us-east-1"
+ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)
 ROOT=.
 SOURCE_DIR="$ROOT/app"
 BUILD_DIR="lambda_package"
@@ -35,8 +36,24 @@ cd ..
 echo "[4/4] Deploying to AWS Lambda..."
 
 # Replace these two lines with a command that updates your Lambda function code with the new $ZIP_FILE
-echo "You need to update your deployment script to actually deploy the Lambda function."
-exit 1
+
+# Try updating the function first
+if aws lambda get-function --function-name "$LAMBDA_NAME" >/dev/null 2>&1; then
+    echo "Updating existing Lambda function..."
+    aws lambda update-function-code \
+        --function-name "$LAMBDA_NAME" \
+        --zip-file fileb://$ZIP_FILE
+else
+    echo "Creating new Lambda function..."
+    aws lambda create-function \
+        --function-name "$LAMBDA_NAME" \
+        --runtime python3.9 \
+        --role arn:aws:iam::$ACCOUNT_ID:role/LabRole \
+        --handler lambda_app.main \
+        --zip-file fileb://$ZIP_FILE \
+        --timeout 10 \
+        --memory-size 128
+fi
 
 
 echo "--- Deployment completed for $LAMBDA_NAME ---"

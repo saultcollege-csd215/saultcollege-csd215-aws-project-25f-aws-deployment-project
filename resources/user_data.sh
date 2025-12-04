@@ -13,7 +13,8 @@ mkdir -p $APP_DIR
 chown ec2-user:ec2-user $APP_DIR
 
 # Clone your application repository (replace with your repo URL)
-git clone !!!Your clone URL here!!! $APP_DIR
+git clone https://github.com/saultcollege-csd215/aws-project-25f-thiago-prestes85.git $APP_DIR
+
 
 cd $APP_DIR
 # Setup Python virtual environment and install dependencies
