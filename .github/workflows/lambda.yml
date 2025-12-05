@@ -4,10 +4,7 @@ on:
   workflow_dispatch:  
   workflow_run:
     workflows: ["test"]
-    types:
-      - completed
-    branches:
-      - main
+    types: [completed]
 
 jobs:
   deploy_lambda:
