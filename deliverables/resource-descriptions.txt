@@ -1,0 +1,122 @@
+{
+    "Table": {
+        "AttributeDefinitions": [
+            {
+                "AttributeName": "source",
+                "AttributeType": "S"
+            },
+            {
+                "AttributeName": "timestamp",
+                "AttributeType": "N"
+            }
+        ],
+        "TableName": "dice-rolls",
+        "KeySchema": [
+            {
+                "AttributeName": "source",
+                "KeyType": "HASH"
+            },
+            {
+                "AttributeName": "timestamp",
+                "KeyType": "RANGE"
+            }
+        ],
+        "TableStatus": "ACTIVE",
+        "CreationDateTime": "2025-12-04T16:41:01.121000+00:00",
+        "ProvisionedThroughput": {
+            "NumberOfDecreasesToday": 0,
+            "ReadCapacityUnits": 0,
+            "WriteCapacityUnits": 0
+        },
+        "TableSizeBytes": 0,
+        "ItemCount": 0,
+        "TableArn": "arn:aws:dynamodb:us-east-1:461718269546:table/dice-rolls",
+        "TableId": "0496db35-c8fc-47fa-9197-254900f434b1",
+        "BillingModeSummary": {
+            "BillingMode": "PAY_PER_REQUEST",
+            "LastUpdateToPayPerRequestDateTime": "2025-12-04T16:41:01.121000+00:00"
+        },
+        "DeletionProtectionEnabled": false,
+        "WarmThroughput": {
+            "ReadUnitsPerSecond": 12000,
+            "WriteUnitsPerSecond": 4000,
+            "Status": "ACTIVE"
+        }
+    }
+}
+---------------------------------------------------------------------------------
+{
+    "FunctionUrlConfigs": [
+        {
+            "FunctionUrl": "https://qogehkq5gzii3pg4aiaold4bh40spmod.lambda-url.us-east-1.on.aws/",
+            "FunctionArn": "arn:aws:lambda:us-east-1:461718269546:function:csd215-lambda",
+            "CreationTime": "2025-12-04T23:37:26.900064415Z",
+            "LastModifiedTime": "2025-12-04T23:42:09.258263586Z",
+            "AuthType": "NONE",
+            "InvokeMode": "BUFFERED"
+        }
+    ]
+}
+-------------------------------------------------------------------------------
+{
+    "Configuration": {
+        "FunctionName": "csd215-lambda",
+        "FunctionArn": "arn:aws:lambda:us-east-1:461718269546:function:csd215-lambda",
+        "Runtime": "python3.9",
+        "Role": "arn:aws:iam::461718269546:role/LabRole",
+        "Handler": "lambda_app.main",
+        "CodeSize": 267,
+        "Description": "",
+        "Timeout": 10,
+        "MemorySize": 256,
+        "LastModified": "2025-12-04T23:31:35.357+0000",
+        "CodeSha256": "/0hoNNHJabaZ6EjW2bn04Tasimtb2UUbklINihXa41k=",
+        "Version": "$LATEST",
+        "VpcConfig": {
+            "SubnetIds": [
+                "subnet-05b4821bab0f2e698"
+            ],
+            "SecurityGroupIds": [
+                "sg-07d85349999ace3c4"
+            ],
+            "VpcId": "vpc-03f3422a82f53e735",
+            "Ipv6AllowedForDualStack": false
+        },
+        "TracingConfig": {
+            "Mode": "PassThrough"
+        },
+        "RevisionId": "e4dfd5d0-5ba2-464c-9cd8-c8bae516db2b",
+        "State": "Active",
+        "LastUpdateStatus": "Successful",
+        "PackageType": "Zip",
+        "Architectures": [
+            "x86_64"
+        ],
+        "EphemeralStorage": {
+            "Size": 512
+        },
+        "SnapStart": {
+            "ApplyOn": "None",
+            "OptimizationStatus": "Off"
+        },
+        "RuntimeVersionConfig": {
+            "RuntimeVersionArn": "arn:aws:lambda:us-east-1::runtime:48c0f790371a08d913f94f05bbcb8cb1641dee331fe7924e60fd40126a861f01"
+        },
+        "LoggingConfig": {
+            "LogFormat": "Text",
+            "LogGroup": "/aws/lambda/csd215-lambda"
+        }
+    },
+    "Code": {
+        "RepositoryType": "S3",
+        "Location": "https://prod-04-2014-tasks.s3.us-east-1.amazonaws.com/snapshots/461718269546/csd215-lambda-212e2da6-fd06-48db-b2e3-bfd3a85ee9e0?versionId=PqwtXDRA7TXQxLhBoSKUE_AQOQMzC8Eb&X-Amz-Security-Token=IQoJb3JpZ2l
+uX2VjEH4aCXVzLWVhc3QtMSJGMEQCIB0ZGcAs1cJmE8O9Bkt4mznWUwG%2F4Dnlam85SK%2BRI3OTAiAvSMRppct4IAcybTkzO0QLVFaPTjfXW9seaU7CWHNSMiqLAghHEAAaDDc0OTY3ODkwMjgzOSIMUIUzWGCo37tCbo9PKugB%2FMT9WgctxO502Ej%2F1R%2F0XMFwkBbNcP2xjo7Z5ZuG1PiDS
+Mx2R46hS87XC07ntnJ03G6C5bOxT2OYd4L2eZwhIYRYGaS1K9t0sAQsXYANN4eFm5BLcxAwuG63VXY2jC1njogHXLFqLN4A7VG09uYNT8%2BUWU9ny%2BPWNUQUOrDcKtIBv2M1tPAk%2Bl7p77AXZlv4JwPwg%2B4N8FEWGu4%2B0qSdX6c0jfqZJ9dyQCTf%2BmIHYfb8w0Chy5NBqdTA5xrmeU83p
+V%2Fk6u8IIpSRcc95u402llXLD3n8Q8kdBVH%2B08xzEIUUipYnFdgdMzC0mcbJBjqOAeCmflJCBw0nKRr%2FKv4Qrl9IECgqiD3mMNmdHSoUtyIAkA4CQkg%2FkG6FONaWsXYQm12M5ocxF6x7wCUolz%2BPAGNvA4HK1OwWBmUNa6fol9mnBOBDHbO2RzOfbebix6DC8VDV9KUvPVDJ5uUMesjnlJd
+PMwuPsthmXdPWGxzKrLWQYTvdLACkZw7FSEHn2Ek%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20251205T003853Z&X-Amz-SignedHeaders=host&X-Amz-Expires=599&X-Amz-Credential=ASIA25DCYHY3QDQBTRTZ%2F20251205%2Fus-east-1%2Fs3%2Faws4_req
+uest&X-Amz-Signature=4eb9bf64a5cc67d11c95482eb12df8305f0492860aeb162be1fa1c3bdf7c5aff"
+    }
+}
+------------------------------------------------------------------
+aws lambda get-function --function-name csd215-lambda
+------------------------------------------------------------------

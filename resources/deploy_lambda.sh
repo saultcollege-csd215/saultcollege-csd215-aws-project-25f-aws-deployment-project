@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # --- Configuration ---
-LAMBDA_NAME="<the name of your lambda function>"
+LAMBDA_NAME="csd215-lambda"
 REGION="us-east-1"
 ROOT=.
 SOURCE_DIR="$ROOT/app"
@@ -9,12 +9,6 @@ BUILD_DIR="lambda_package"
 ZIP_FILE="lambda_function.zip"
 
 set -e   # Stop on errors
-
-# Fail early if LAMBDA_NAME is not set properly
-if [[ -z "${LAMBDA_NAME// }" || "$LAMBDA_NAME" == \<* ]]; then
-    echo "[ERROR] You did not set LAMBDA_NAME in your deployment script."
-    exit 1
-fi
 
 echo "--- Starting deployment for $LAMBDA_NAME ---"
 
@@ -24,8 +18,9 @@ rm -f $ZIP_FILE
 mkdir -p $BUILD_DIR/app
 
 echo "[2/4] Copying application files..."
+# Copy the Lambda entry file (lambda_app.py) and other modules
 cp $SOURCE_DIR/lambda_app.py $BUILD_DIR
-cp $SOURCE_DIR/__init__.py $SOURCE_DIR/core.py $SOURCE_DIR/data.py $SOURCE_DIR/lambda_app.py $BUILD_DIR/app
+cp $SOURCE_DIR/__init__.py $SOURCE_DIR/core.py $SOURCE_DIR/data.py $BUILD_DIR/app
 
 echo "[3/4] Packaging the Lambda function..."
 cd $BUILD_DIR
@@ -33,10 +28,9 @@ zip -r9 ../$ZIP_FILE ./* -x "*.git*" -x "*.DS_Store" > /dev/null
 cd ..
 
 echo "[4/4] Deploying to AWS Lambda..."
-
-# Replace these two lines with a command that updates your Lambda function code with the new $ZIP_FILE
-echo "You need to update your deployment script to actually deploy the Lambda function."
-exit 1
-
+aws lambda update-function-code \
+  --function-name "$LAMBDA_NAME" \
+  --zip-file "fileb://$ZIP_FILE" \
+  --region "$REGION"
 
 echo "--- Deployment completed for $LAMBDA_NAME ---"
