@@ -87,3 +87,10 @@ aws lambda remove-permission --function-name $name --statement-id allow-public-a
 # Test invoking the lambda function
 aws lambda invoke --function-name $name lambda-out.txt
 aws lambda invoke --function-name $name --payload file://$path_to_json_payload_file --cli-binary-format raw-in-base64-out lambda-out.txt
+
+
+#  DynamoDB
+# aws dynamodb create-table 
+#           --attribute-definitions <value> 
+#           --table-name <value> 
+#           --key-schema <value>

@@ -1,20 +1,15 @@
 name: Lambda Deploy
 
 on:
-  # Run automatically after the "Test" workflow completes
   workflow_run:
     workflows: ["Test"]
     types:
       - completed
 
-  # Allow manual runs from the GitHub Actions UI
   workflow_dispatch:
 
 jobs:
   deploy-lambda:
-    # Only run if:
-    # - the Test workflow succeeded (for workflow_run), OR
-    # - it's a manual dispatch
     if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
 
     runs-on: ubuntu-latest
