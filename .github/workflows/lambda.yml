@@ -6,9 +6,6 @@ on:
     types:
       - completed
   workflow_dispatch:
-  push:
-    branches:
-      - Project
 
 jobs:
   deploy_lambda:
