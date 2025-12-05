@@ -1,1 +1,36 @@
 name: Lambda deployment
+
+# Triggers: after the Test workflow succeeds, or manual trigger
+on:
+  workflow_run:
+    workflows: ["Test"]
+    types:
+      - completed
+  workflow_dispatch:   # manual trigger
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' || github.event_name == 'workflow_dispatch' }}
+
+    steps:
+      # 1. Checkout the repository code
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      # 2. Configure AWS credentials using GitHub Secrets
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v3
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
+          aws-region: us-east-1
+
+      # 3. Set permissions for deploy script
+      - name: Make deploy script executable
+        run: chmod +x resources/deploy_lambda.sh
+
+      # 4. Run the deploy script
+      - name: Deploy Lambda
+        run: ./resources/deploy_lambda.sh
