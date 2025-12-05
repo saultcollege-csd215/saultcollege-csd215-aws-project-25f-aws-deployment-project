@@ -1,21 +1,19 @@
 name: Lambda deployment
 
 on:
+  workflow_dispatch:  
   workflow_run:
     workflows: ["test"]
     types:
       - completed
-  workflow_dispatch:
 
 jobs:
   deploy_lambda:
     runs-on: ubuntu-latest
-    if: ${{github.event.workflow_run.conclusion == 'success'}}
     defaults:
       run:
         working-directory: ./resources
-
-    
+    if: ${{github.event.workflow_run.conclusion == 'success'}}
     steps:
       - name: Checkout code
         uses: actions/checkout@v5
