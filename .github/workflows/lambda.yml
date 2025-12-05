@@ -32,5 +32,5 @@ jobs:
         run: chmod +x resources/deploy_lambda.sh
 
       # 4. Run the deploy script
-      - name: Deploy Lambda
-        run: ./resources/deploy_lambda.sh
+      - name: Lambda deployment
+        run: ./resources/lambda.sh
