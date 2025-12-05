@@ -9,6 +9,7 @@ on:
 
 jobs:
   deploy_lambda:
+    name: Setup
     runs-on: ubuntu-latest
     defaults:
       run:
