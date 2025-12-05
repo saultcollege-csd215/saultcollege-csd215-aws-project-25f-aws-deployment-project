@@ -1,1 +1,36 @@
 name: Lambda deployment
+
+on:
+  workflow_run:
+    workflows: ["test"]
+    types:
+      - completed
+  workflow_dispatch:
+
+jobs:
+  deploy_lambda:
+    runs-on: ubuntu-latest
+    if: ${{github.event.workflow_run.conclusion == 'success'}}
+    defaults:
+      run:
+        working-directory: ./resources
+
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+        with:
+          ref: Project
+      
+      - name: Setup AWS
+        run: |
+          aws configure set aws_access_key_id ${{secrets.AWS_ACCESS_KEY_ID}}
+          aws configure set aws_secret_access_key ${{secrets.AWS_SECRET_ACCESS_KEY}}
+          aws configure set aws_session_token ${{secrets.AWS_SESSION_TOKEN}}
+
+      - name: Make the script executable
+        run: chmod +x deploy_lambda.sh
+
+      - name: Run the script
+        run: |
+          ./deploy_lambda.sh
