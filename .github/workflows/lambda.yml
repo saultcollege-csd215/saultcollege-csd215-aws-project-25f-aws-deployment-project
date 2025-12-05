@@ -1,26 +1,26 @@
 name: Lambda Deployment
 
-# Triggers: after the Test workflow succeeds, or manual trigger
+# Trigger: manually or after Test workflow completes
 on:
   workflow_run:
-    workflows: ["Test"]
+    workflows: ["Test"]    # Must match your test.yml 'name:' exactly
     types:
       - completed
-  workflow_dispatch:   # manual trigger
+  workflow_dispatch:        # Manual trigger
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
+    # Only run if Test workflow succeeded OR this was a manual trigger
     if: ${{ github.event.workflow_run.conclusion == 'success' || github.event_name == 'workflow_dispatch' }}
 
     steps:
-      # 1. Checkout the repository code
+      # 1. Checkout repository code
       - name: Checkout code
         uses: actions/checkout@v6
-        with:
-          ref: FinalLabAWS
 
-      # 2. Configure AWS credentials using GitHub Secrets
+      # 2. Configure AWS credentials from GitHub Secrets
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v3
         with:
@@ -29,10 +29,10 @@ jobs:
           aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
           aws-region: us-east-1
 
-      # 3. Set permissions for deploy script
+      # 3. Make the deploy script executable
       - name: Make deploy script executable
         run: chmod +x resources/deploy_lambda.sh
 
-      # 4. Run the deploy script 
-      - name: Lambda Deployment
+      # 4. Run the deployment script
+      - name: Deploy Lambda
         run: ./resources/deploy_lambda.sh
