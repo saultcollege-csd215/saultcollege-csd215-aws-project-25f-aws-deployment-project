@@ -6,6 +6,8 @@ on:
     workflows: ["test"]
     types:
       - completed
+    branches:
+      - Project
 
 jobs:
   deploy_lambda:
