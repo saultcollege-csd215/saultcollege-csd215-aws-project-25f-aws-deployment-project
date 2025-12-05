@@ -1,4 +1,4 @@
-name: Lambda deployment
+name: Lambda Deployment
 
 # Triggers: after the Test workflow succeeds, or manual trigger
 on:
@@ -17,6 +17,8 @@ jobs:
       # 1. Checkout the repository code
       - name: Checkout code
         uses: actions/checkout@v6
+        with:
+          ref: FinalLabAWS
 
       # 2. Configure AWS credentials using GitHub Secrets
       - name: Configure AWS credentials
@@ -32,5 +34,5 @@ jobs:
         run: chmod +x resources/deploy_lambda.sh
 
       # 4. Run the deploy script 
-      - name: Lambda deployment
+      - name: Lambda Deployment
         run: ./resources/deploy_lambda.sh
