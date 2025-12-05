@@ -7,7 +7,7 @@ on:
     types:
       - completed
     branches:
-      - Project
+      - main
 
 jobs:
   deploy_lambda:
