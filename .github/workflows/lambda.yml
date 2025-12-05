@@ -1,1 +1,38 @@
-name: Lambda deployment
+name: Lambda Deploy
+
+on:
+  # Run automatically after the "Test" workflow completes
+  workflow_run:
+    workflows: ["Test"]
+    types:
+      - completed
+
+  # Allow manual runs from the GitHub Actions UI
+  workflow_dispatch:
+
+jobs:
+  deploy-lambda:
+    # Only run if:
+    # - the Test workflow succeeded (for workflow_run), OR
+    # - it's a manual dispatch
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
+          aws-region: us-east-1
+
+      - name: Make deploy script executable
+        run: chmod +x resources/deploy_lambda.sh
+
+      - name: Deploy Lambda
+        run: ./resources/deploy_lambda.sh
