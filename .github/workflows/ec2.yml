@@ -1,1 +1,29 @@
-name: EC2 Deployment
+# .github/workflows/ec2.yml
+name: EC2 Deploy
+
+on:
+  workflow_run:
+    workflows: ["Test"]
+    types:
+      - completed
+
+  workflow_dispatch:
+
+jobs:
+  deploy-ec2:
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Deploy to EC2 via SSH
+        uses: apple-boy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.EC2_HOST }}      # your EC2 public IP / DNS
+          username: ec2-user
+          key: ${{ secrets.EC2_KEY }}        # your csd215-keypair.pem contents
+          script: |
+            bash /home/ec2-user/dice/resources/deploy_ec2.sh
