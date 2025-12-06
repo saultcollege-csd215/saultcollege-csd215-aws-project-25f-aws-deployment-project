@@ -32,7 +32,7 @@ jobs:
         #with:
           #workflow: Lambda deployment
 
-      - name: Invoke EC2 Deployment
+      - name: Invoke EC2 deployment
         uses: benc-uk/workflow-dispatch@v1
         with:
-          workflow: EC2 Deployment
+          workflow: EC2 deployment
