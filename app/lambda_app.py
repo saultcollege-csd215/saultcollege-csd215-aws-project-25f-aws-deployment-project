@@ -12,7 +12,7 @@ def response(status_code, body):
 def opponent_response(status_code, body, opponent_result):
     return{
         'statusCode': status_code,
-        'body': "test",
+        'body': json.dumps(body, opponent_result),
         'headers': {'Content-Type': 'application/json'}
     }
 
