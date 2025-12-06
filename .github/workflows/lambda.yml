@@ -2,10 +2,6 @@ name: Lambda deployment
 
 on:
   workflow_dispatch:  
-  workflow_run:
-    workflows: ['test']
-    types: [completed]
-    branches: [Project]
 
 jobs:
   deploy_lambda:
@@ -15,7 +11,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v5
         with:
-          ref: ${{ github.event.workflow_run.head_branch }}
+          ref: Project
           
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v5.1.1
