@@ -6,7 +6,7 @@ on:
 jobs:
   deploy_EC2:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v5
@@ -16,5 +16,6 @@ jobs:
       - name: Connect to EC2 instance and run deployment script
         uses: appleboy/ssh-action@v1
         with:
+          host: 18.215.248.47
           key: ${{secrets.EC2_KEY}}
           script_path: ./resources/deploy_ec2.sh
