@@ -1,1 +1,28 @@
 name: Test
+
+on:
+    workflow_dispatch:
+    push:
+        branches:
+            - aws-lab
+
+jobs:
+    test:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v5
+              with:
+                ref: aws-lab
+                
+            - name: Set up Python
+              uses: actions/setup-python@v6
+              with: 
+                python-version: '3.9'
+            
+            - name: Install dependencies
+              run: pip install -r app/requirements_flask.txt
+
+            - name: Run tests
+              run: pytest tests
