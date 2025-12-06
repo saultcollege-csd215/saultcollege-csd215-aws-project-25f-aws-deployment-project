@@ -2,11 +2,18 @@ import json
 import app.core as core
 import app.data as data
 
-def response(status_code, body, opponent_body):
+def response(status_code, body):
     return {
         'statusCode': status_code,
         'body': json.dumps(body),
-        'opponentBody': json.dumps(opponent_body),
+        'headers': {'Content-Type': 'application/json'}
+    }
+
+def opponent_response(status_code, body, opponent_result):
+    return{
+        'statusCode': status_code,
+        'body': json.dumps(body),
+        'opponentBody': json.dumps(opponent_result),
         'headers': {'Content-Type': 'application/json'}
     }
 
@@ -36,6 +43,6 @@ def main(event, context):
 
         data.save_roll_history(result, 'lambda_app')
 
-        return response(200, result, opponent_result)
+        return opponent_response(200, result, opponent_result)
     
     return response(404, {'error': 'Not found'})
