@@ -1,1 +1,47 @@
-name: EC2 Deployment
+name: Deploy EC2
+
+on:
+  # Run automatically after the "Test" workflow finishes
+  workflow_run:
+    workflows: ["Test"]
+    types: [completed]
+
+  # Allow manual runs from the Actions tab
+  workflow_dispatch: {}
+
+jobs:
+  deploy-ec2:
+    # Only run if:
+    # - The Test workflow succeeded, OR
+    # - This was triggered manually
+    if: >
+      github.event_name == 'workflow_dispatch' ||
+      github.event.workflow_run.conclusion == 'success'
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+      # This just lets Actions see your repo (not strictly required for SSH,
+      # but useful if you want to use files later).
+        uses: actions/checkout@v4
+
+      - name: Deploy to EC2 via SSH and run deploy_ec2.sh
+        uses: apple-boy/ssh-action@v1.0.3
+        with:
+          host: 13.219.97.148                # <-- YOUR_EC2_PUBLIC_IP
+          username: ec2-user
+          key: ${{ secrets.EC2_KEY }}        # <-- your PEM key stored as a secret
+          port: 22
+          script: |
+            # Go to the project directory on the EC2 instance
+            cd /home/ec2-user/aws-project-25f-Jacky1683 || exit 1
+
+            # Pull latest code from GitHub
+            git pull origin lab3 || git pull
+
+            # Make sure deploy script is executable
+            chmod +x resources/deploy_ec2.sh
+
+            # Run the deploy script (this should restart the Flask app / service)
+            ./resources/deploy_ec2.sh
