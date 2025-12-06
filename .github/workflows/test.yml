@@ -27,7 +27,12 @@ jobs:
       - name: Run tests
         run: pytest tests
 
-      - name: Invoke Lambda deployment
+     # - name: Invoke Lambda deployment
+        #uses: benc-uk/workflow-dispatch@v1
+        #with:
+          #workflow: Lambda deployment
+
+      - name: Invoke EC2 Deployment
         uses: benc-uk/workflow-dispatch@v1
         with:
-          workflow: Lambda deployment
+          workflow: EC2 Deployment
