@@ -2,10 +2,11 @@ import json
 import app.core as core
 import app.data as data
 
-def response(status_code, body):
+def response(status_code, body, opponent_body):
     return {
         'statusCode': status_code,
         'body': json.dumps(body),
+        'opponentBody': json.dumps(opponent_body),
         'headers': {'Content-Type': 'application/json'}
     }
 
