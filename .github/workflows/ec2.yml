@@ -14,10 +14,10 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v3
 
       - name: Deploy to EC2 using SSH
-        uses: appleboy/ssh-action@v1.0.3
+        uses: apple-boy/ssh-action@v1.0.3
         with:
           host: 98.82.26.255
           username: ec2-user
