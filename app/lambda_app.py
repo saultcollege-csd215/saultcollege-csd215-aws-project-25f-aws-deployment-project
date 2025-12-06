@@ -31,8 +31,10 @@ def main(event, context):
 
         result = core.roll_dice(num_faces, num_dice)
 
+        opponent_result = core.roll_dice(num_faces, num_dice)
+
         data.save_roll_history(result, 'lambda_app')
 
-        return response(200, result)
+        return response(200, result, opponent_result)
     
     return response(404, {'error': 'Not found'})
