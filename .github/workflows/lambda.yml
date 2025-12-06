@@ -21,7 +21,7 @@ jobs:
           aws-session-token: ${{secrets.AWS_SESSION_TOKEN}}
 
       - name: Make the script executable
-        run: chmod +x deploy_lambda.sh
+        run: chmod +x ./resources/deploy_lambda.sh
 
       - name: Run the script
         run: |
