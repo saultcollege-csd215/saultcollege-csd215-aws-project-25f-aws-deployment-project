@@ -9,6 +9,7 @@ def response(status_code, body):
         'headers': {'Content-Type': 'application/json'}
     }
 
+
 def main(event, context):
     path = event.get('rawPath', event.get('path', ''))
     query = event.get('queryStringParameters', {}) or {}
