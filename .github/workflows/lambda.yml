@@ -4,11 +4,12 @@ on:
   workflow_dispatch:  
   workflow_run:
     workflows: [test]
-    types: [completed]
+    types: 
+      - completed
 
 jobs:
   deploy_lambda:
-    if: ${{github.event.workflow_run.conclusion == 'success'}}
+    #if: ${{github.event.workflow_run.conclusion == 'success'}}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -16,17 +17,17 @@ jobs:
         with:
           ref: Project
           
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v5.1.1
-        with:
-          aws-region: us-east-1
-          aws_access_key_id: ${{secrets.AWS_ACCESS_KEY_ID}}
-          aws_secret_access_key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
-          aws_session_token: ${{secrets.AWS_SESSION_TOKEN}}
+      #- name: Configure AWS Credentials
+        #uses: aws-actions/configure-aws-credentials@v5.1.1
+        #with:
+          #aws-region: us-east-1
+          #aws_access_key_id: ${{secrets.AWS_ACCESS_KEY_ID}}
+          #aws_secret_access_key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+          #aws_session_token: ${{secrets.AWS_SESSION_TOKEN}}
 
-      - name: Make the script executable
-        run: chmod +x deploy_lambda.sh
+      #- name: Make the script executable
+        #run: chmod +x deploy_lambda.sh
 
-      - name: Run the script
-        run: |
-          ./resources/deploy_lambda.sh
+      #- name: Run the script
+        #run: |
+          #./resources/deploy_lambda.sh
