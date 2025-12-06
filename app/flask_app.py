@@ -26,7 +26,6 @@ def roll_dice(num_faces):
 
     data.save_roll_history(result, source='flask_app')
 
-    return jsonify(result, "opponents result:", opponents_result)
     
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=8000)
