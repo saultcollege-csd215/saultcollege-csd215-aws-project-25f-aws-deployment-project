@@ -35,4 +35,4 @@ jobs:
       - name: Invoke Lambda deployment
         uses: benc-uk/workflow-dispatch@v1
         with:
-          workflow: Lambda deployment
+          workflow: lambda.yml
