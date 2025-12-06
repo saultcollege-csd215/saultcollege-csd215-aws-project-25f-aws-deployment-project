@@ -15,7 +15,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-
+        with: 
+          ref: aws-lab
+          
       - name: Deploy to EC2 using SSH
         uses: apple-boy/ssh-action@v1.0.3
         with:
