@@ -12,8 +12,6 @@ def response(status_code, body):
 def opponent_response(status_code, body, opponent_result):
     return{
         'statusCode': status_code,
-        'body': json.dumps(body),
-        'body': json.dumps(opponent_result),
         'headers': {'Content-Type': 'application/json'}
     }
 
