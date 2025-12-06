@@ -1,4 +1,4 @@
-name: EC2 deployment
+name: EC2 Deployment
 
 on:
   workflow_dispatch:  
@@ -6,12 +6,13 @@ on:
 jobs:
   deploy_EC2:
     runs-on: ubuntu-latest
+    
     steps:
       - name: Checkout code
         uses: actions/checkout@v5
         with:
           ref: Project
-
+          
       - name: Connect to EC2 instance and run deployment script
         uses: appleboy/ssh-action@v1
         with:
