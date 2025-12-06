@@ -33,7 +33,7 @@ def main(event, context):
 
         result = core.roll_dice(num_faces, num_dice)
 
-        data.save_roll_history(result, 'lambda')
+        data.save_roll_history(result, 'lambda_app')
 
         return response(200, result)
 
