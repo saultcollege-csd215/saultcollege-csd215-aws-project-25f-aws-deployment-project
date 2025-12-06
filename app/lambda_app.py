@@ -9,13 +9,6 @@ def response(status_code, body):
         'headers': {'Content-Type': 'application/json'}
     }
 
-def opponent_response(status_code, body, opponent_result):
-    return{
-        'statusCode': status_code,
-        'body': json.dumps(body, opponent_result),
-        'headers': {'Content-Type': 'application/json'}
-    }
-
 def main(event, context):
     path = event.get('rawPath', event.get('path', ''))
     query = event.get('queryStringParameters', {}) or {}
@@ -40,8 +33,10 @@ def main(event, context):
 
         opponent_result = core.roll_dice(num_faces, num_dice)
 
+        both_results = result + opponent_result
+
         data.save_roll_history(result, 'lambda_app')
 
-        return opponent_response(200, result, opponent_result)
+        return response(200, both_results,)
     
     return response(404, {'error': 'Not found'})
