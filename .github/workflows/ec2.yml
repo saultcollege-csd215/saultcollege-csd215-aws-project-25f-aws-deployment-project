@@ -1,1 +1,18 @@
 name: EC2 Deployment
+
+on:
+  workflow_dispatch:  
+
+jobs:
+  deploy_EC2:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+        with:
+          ref: Project
+      - name: Connect to EC2 instance and run deployment script
+        uses: appleboy/ssh-action@v1
+        with:
+          key: ${{secrets.EC2_KEY}}
+          script_path: ./resources/deploy_ec2.sh
