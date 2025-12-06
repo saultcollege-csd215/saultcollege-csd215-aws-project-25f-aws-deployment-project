@@ -33,7 +33,7 @@ def main(event, context):
 
         opponent_result = core.roll_dice(num_faces, num_dice)
 
-        both_results = result + opponent_result
+        both_results = [result, opponent_result]
 
         data.save_roll_history(result, 'lambda_app')
 
