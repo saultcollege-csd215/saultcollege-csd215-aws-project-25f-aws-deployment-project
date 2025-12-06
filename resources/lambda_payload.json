@@ -1,6 +1,6 @@
 {
-    "rawPath": "/roll/d20",
-    "queryStringParameters": {
-        "n": "10"
-    }
+  "rawPath": "/roll/d20",
+  "queryStringParameters": {
+    "n": "10"
+  }
 }
