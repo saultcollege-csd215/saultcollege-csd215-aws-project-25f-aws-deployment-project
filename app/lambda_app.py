@@ -9,11 +9,13 @@ def response(status_code, body):
         'headers': {'Content-Type': 'application/json'}
     }
 
-
 def main(event, context):
     path = event.get('rawPath', event.get('path', ''))
     query = event.get('queryStringParameters', {}) or {}
     
+    if path == '/test':
+        return response(200, {"message": "test"})
+
     if path == '/hello':
         return response(200, {"message": "Hello, World!"})
 
@@ -32,12 +34,8 @@ def main(event, context):
 
         result = core.roll_dice(num_faces, num_dice)
 
-        opponent_result = core.roll_dice(num_faces, num_dice)
-
-        both_results = [result, opponent_result]
-
         data.save_roll_history(result, 'lambda_app')
 
-        return response(200, both_results,)
+        return response(200, result)
     
     return response(404, {'error': 'Not found'})
