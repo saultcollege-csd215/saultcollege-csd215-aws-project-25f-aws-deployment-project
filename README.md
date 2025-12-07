@@ -176,17 +176,24 @@ You will start by creating a placeholder lambda function. Then you will complete
      - Security group: Your `csd215-lambda-sg` security group
    - Use the provided `resources/lambda_placeholder.zip` file as the deployment package.
    - Handler: `lambda_app.main` (i.e. the `main` function in the `lambda_app.py` file is the entry point)
-3. Use the `aws lambda invoke` command to test the function. You may use the provided `resources/lambda_playload.json` file as the input payload. Verify that the function executes successfully.
-4. Use the `aws lambda list-function-url-configs` to determine the function URL for your Lambda function.
-5. Using a web browser, navigate to the function URL of your Lambda function. You should see a 'Hello' message.
-6. Open the `resources/deploy_lambda.sh` script and complete it to automate the process of packaging and deploying the Lambda function code.
+2. Make your Lambda function publicly accessible using a Function URL:
+   1. Create a Function URL config with an `auth_type` of `NONE` (so that no authentication is required to use your Lambda function)
+   2. Add the following permissions to your Lambda function:
+      - Action: `lambda:InvokeFunctionUrl`
+      - Principle: `"*"` (to allow anyone permission)
+      - URL Auth Type: `NONE`
+      - Statement id: some unique name to identify this permission policy
+4. Use the `aws lambda invoke` command to test the function. You may use the provided `resources/lambda_playload.json` file as the input payload. Verify that the function executes successfully.
+5. Use the `aws lambda list-function-url-configs` to determine the function URL for your Lambda function.
+6. Using a web browser, navigate to the function URL of your Lambda function. You should see a 'Hello' message.
+7. Open the `resources/deploy_lambda.sh` script and complete it to automate the process of packaging and deploying the Lambda function code.
    1. OBSERVE: The script packages the application code into a ZIP file.
    2. MODIFY: Set the `LAMBDA_NAME` variable to your Lambda function name.
    2. MODIFY: Add the AWS CLI command in step 4 of the script to update the Lambda function code with the new package.
-7. Run the `resources/deploy_lambda.sh` script to deploy the Lambda function code.
-8. Verify that your Lambda function was updated using the CLI or a web browser.
+8. Run the `resources/deploy_lambda.sh` script to deploy the Lambda function code.
+9. Verify that your Lambda function was updated using the CLI or a web browser.
    1. Load at least a few different `/roll/d#?n=#` requests.
-9. DELIVERABLES:
+10. DELIVERABLES:
    1. Take a screenshot of the web browser showing the Lambda function output. Save this screenshot as `deliverables/lambda-function.png`.
    2. Add the output of the `get-function` command for your Lambda function to `deliverables/resource-descriptions.txt`.
 
@@ -204,10 +211,10 @@ Then you will write deployment workflows for both the Flask app and the Lambda f
 
 In `.github/workflows/test.yml`...
 
-1. Trigger the workflow on every push to the repository
+1. Trigger the workflow on every push to the LAB BRANCH of your repository
 2. Set up a job that runs on Ubuntu latest
 3. Add the following steps to the job:
-   1. Checkout the repository code
+   1. Checkout the LAB BRANCH of your repository code
    2. Set up Python 3.9
    3. Install the required Python packages from `app/requirements_flask.txt`
    4. Run the tests using `pytest`
@@ -228,17 +235,15 @@ This workflow will require the AWS credentials to be stored as GitHub Secrets in
      >
      >  Also note that in a production environment, you would only need to store the access key ID and secret access key. Session tokens are ONLY required for temporary credentials like those provided by AWS Academy Learner Labs.
 3. In `.github/workflows/lambda.yml`...
-   1. Trigger the workflow on 
-      - Completion of the "Test" workflow
-      - Manual workflow dispatch
-   2. Set up a job that
-      - Only runs if the "Test" workflow succeeded
-      - Runs on Ubuntu latest
+   1. Trigger the workflow on manual workflow dispatch
+   2. Set up a job that runs on Ubuntu latest
    3. Add the following steps to the job:
-      1. Checkout the repository code
-      2. Configure AWS credentials using the GitHub Secrets you created earlier
-      3. Set the permissions for the `resources/deploy_lambda.sh` script to be executable
+      1. Checkout the LAB BRANCH of your repository code
+      2. Using the "Configure AWS Credentials" action, set your AWS region, access key, secret access key, and session token using the GitHub Secrets you created earlier
+      3. Run a `chmod` command to set the permissions for the `resources/deploy_lambda.sh` script to be executable
       3. Run the `resources/deploy_lambda.sh` script to deploy the Lambda function.
+   4. Add a final step to `.github/workflows/test.yml`...
+      1. Use the "Workflow Dispatch" action by `benc-uk` to dispatch your `lambda.yml` workflow
 4. Commit and push your yml file to the repository.
 5. In a web browser, navigate to the "Actions" tab of your GitHub repository and verify that the Lambda deployment workflow runs successfully on your push.
 
@@ -249,17 +254,15 @@ For this workflow, you will use SSH to run a deployment script on the EC2 instan
 1. In your GitHub repository, navigate to "Settings" > "Secrets and variables" > "Actions"
 2. Add a key named `EC2_KEY` and paste the entire contents of your private key file (`.pem`) as the value.
 3. In `.github/workflows/ec2.yml`...
-   1. Trigger the workflow on 
-      - Completion of the "Test" workflow
-      - Manual workflow dispatch
-   2. Set up a job that
-      - Only runs if the "Test" workflow succeeded
-      - Runs on Ubuntu latest
+   1. Trigger the workflow on manual workflow dispatch
+   2. Set up a job that runs on Ubuntu latest
    3. Add the following steps to the job:
-      1. Checkout the repository code
+      1. Checkout the LAB BRANCH of your repository code
       2. Use the `apple-boy/ssh-action` GitHub Action to connect to your EC2 instance via SSH and run a deployment script.
          - Use the `EC2_KEY` secret for authentication.
          - Use the provided `resources/deploy_ec2.sh` script as the deployment script to run on the EC2 instance.
+4. Add another final step to `.github/workflows/test.yml`...
+      1. Use the "Workflow Dispatch" action by `benc-uk` to dispatch your `ec2.yml` workflow
 4. Commit and push your yml file to the repository.
 5. In a web browser, navigate to the "Actions" tab of your GitHub repository and verify that the EC2 deployment workflow runs successfully on your push.
 
