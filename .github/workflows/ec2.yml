@@ -16,7 +16,7 @@ jobs:
       - name: Connect to EC2 instance and run deployment script
         uses: appleboy/ssh-action@v1
         with:
-          host: 100.31.77.31
+          host: 3.89.204.247
           username: ec2-user
           key: ${{secrets.EC2_KEY}}
           script_path: ./resources/deploy_ec2.sh

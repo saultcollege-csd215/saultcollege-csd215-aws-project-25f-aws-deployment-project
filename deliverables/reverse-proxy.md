@@ -1,0 +1,1 @@
+The puropse of using the nginx web server as a reverse proxy in this setup is to communicate between requests and the server.Benifits of using the nginx web server as a reverse proxy in this setup include the backend server being hidden from internet access, SSL termination, load balancing, and performance boosts.

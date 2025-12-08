@@ -1,0 +1,568 @@
+{
+    "Table": {
+        "AttributeDefinitions": [
+            {
+                "AttributeName": "source",
+                "AttributeType": "S"
+            },
+            {
+                "AttributeName": "timestamp",
+                "AttributeType": "S"
+            }
+        ],
+        "TableName": "dice-rolls",
+        "KeySchema": [
+            {
+                "AttributeName": "source",
+                "KeyType": "HASH"
+            },
+            {
+                "AttributeName": "timestamp",
+                "KeyType": "RANGE"
+            }
+        ],
+        "TableStatus": "ACTIVE",
+        "CreationDateTime": "2025-12-03T20:12:39.964000+00:00",
+        "ProvisionedThroughput": {
+            "NumberOfDecreasesToday": 0,
+            "ReadCapacityUnits": 0,
+            "WriteCapacityUnits": 0
+        },
+        "TableSizeBytes": 0,
+        "ItemCount": 0,
+        "TableArn": "arn:aws:dynamodb:us-east-1:176527902890:table/dice-rolls",
+        "TableId": "850a661e-54e3-4987-a574-8d960a5d88b7",
+        "BillingModeSummary": {
+            "BillingMode": "PAY_PER_REQUEST",
+            "LastUpdateToPayPerRequestDateTime": "2025-12-03T20:12:39.964000+00:00"
+        },
+        "DeletionProtectionEnabled": false,
+        "WarmThroughput": {
+            "ReadUnitsPerSecond": 12000,
+            "WriteUnitsPerSecond": 4000,
+            "Status": "ACTIVE"
+        }
+    }
+}
+(END)
+        "TableArn": "arn:aws:dynamodb:us-east-1:176527902890:table/dice-rolls",
+        "TableId": "850a661e-54e3-4987-a574-8d960a5d88b7",
+        "BillingModeSummary": {
+            "BillingMode": "PAY_PER_REQUEST",
+            "LastUpdateToPayPerRequestDateTime": "2025-12-03T20:12:39.964000+00:00"
+        },
+        "DeletionProtectionEnabled": false,
+        "WarmThroughput": {
+            "ReadUnitsPerSecond": 12000,
+            "WriteUnitsPerSecond": 4000,
+            "Status": "ACTIVE"
+        }
+    }
+}
+~
+(END)
+        "TableArn": "arn:aws:dynamodb:us-east-1:176527902890:table/dice-rolls",
+        "TableId": "850a661e-54e3-4987-a574-8d960a5d88b7",
+        "BillingModeSummary": {
+            "BillingMode": "PAY_PER_REQUEST",
+            "LastUpdateToPayPerRequestDateTime": "2025-12-03T20:12:39.964000+00:00"
+        },
+        "DeletionProtectionEnabled": false,
+        "WarmThroughput": {
+            "ReadUnitsPerSecond": 12000,
+            "WriteUnitsPerSecond": 4000,
+            "Status": "ACTIVE"
+        }
+    }
+}
+~
+~
+(END)
+        "TableArn": "arn:aws:dynamodb:us-east-1:176527902890:table/dice-rolls",
+        "TableId": "850a661e-54e3-4987-a574-8d960a5d88b7",
+        "BillingModeSummary": {
+            "BillingMode": "PAY_PER_REQUEST",
+            "LastUpdateToPayPerRequestDateTime": "2025-12-03T20:12:39.964000+00:00"
+        },
+        "DeletionProtectionEnabled": false,
+        "WarmThroughput": {
+            "ReadUnitsPerSecond": 12000,
+            "WriteUnitsPerSecond": 4000,
+            "Status": "ACTIVE"
+        }
+    }
+}
+~
+~
+~
+~
+~
+(END)
+        "TableArn": "arn:aws:dynamodb:us-east-1:176527902890:table/dice-rolls",
+        "TableId": "850a661e-54e3-4987-a574-8d960a5d88b7",
+        "BillingModeSummary": {
+            "BillingMode": "PAY_PER_REQUEST",
+            "LastUpdateToPayPerRequestDateTime": "2025-12-03T20:12:39.964000+00:00"
+        },
+        "DeletionProtectionEnabled": false,
+        "WarmThroughput": {
+            "ReadUnitsPerSecond": 12000,
+            "WriteUnitsPerSecond": 4000,
+            "Status": "ACTIVE"
+        }
+    }
+}
+~
+~
+~
+~
+~
+~
+~
+(END)
+        "TableArn": "arn:aws:dynamodb:us-east-1:176527902890:table/dice-rolls",
+        "TableId": "850a661e-54e3-4987-a574-8d960a5d88b7",
+        "BillingModeSummary": {
+            "BillingMode": "PAY_PER_REQUEST",
+            "LastUpdateToPayPerRequestDateTime": "2025-12-03T20:12:39.964000+00:00"
+        },
+        "DeletionProtectionEnabled": false,
+        "WarmThroughput": {
+            "ReadUnitsPerSecond": 12000,
+            "WriteUnitsPerSecond": 4000,
+            "Status": "ACTIVE"
+        }
+    }
+}
+~
+~
+~
+~
+~
+~
+~
+~
+(END)
+        "TableArn": "arn:aws:dynamodb:us-east-1:176527902890:table/dice-rolls",
+        "TableId": "850a661e-54e3-4987-a574-8d960a5d88b7",
+        "BillingModeSummary": {
+            "BillingMode": "PAY_PER_REQUEST",
+            "LastUpdateToPayPerRequestDateTime": "2025-12-03T20:12:39.964000+00:00"
+        },
+        "DeletionProtectionEnabled": false,
+        "WarmThroughput": {
+            "ReadUnitsPerSecond": 12000,
+            "WriteUnitsPerSecond": 4000,
+            "Status": "ACTIVE"
+        }
+    }
+}
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+(END)
+        "TableArn": "arn:aws:dynamodb:us-east-1:176527902890:table/dice-rolls",
+        "TableId": "850a661e-54e3-4987-a574-8d960a5d88b7",
+        "BillingModeSummary": {
+            "BillingMode": "PAY_PER_REQUEST",
+            "LastUpdateToPayPerRequestDateTime": "2025-12-03T20:12:39.964000+00:00"
+        },
+        "DeletionProtectionEnabled": false,
+        "WarmThroughput": {
+            "ReadUnitsPerSecond": 12000,
+            "WriteUnitsPerSecond": 4000,
+            "Status": "ACTIVE"
+        }
+    }
+}
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+(END)
+        "TableArn": "arn:aws:dynamodb:us-east-1:176527902890:table/dice-rolls",
+        "TableId": "850a661e-54e3-4987-a574-8d960a5d88b7",
+        "BillingModeSummary": {
+            "BillingMode": "PAY_PER_REQUEST",
+            "LastUpdateToPayPerRequestDateTime": "2025-12-03T20:12:39.964000+00:00"
+        },
+        "DeletionProtectionEnabled": false,
+        "WarmThroughput": {
+            "ReadUnitsPerSecond": 12000,
+            "WriteUnitsPerSecond": 4000,
+            "Status": "ACTIVE"
+        }
+    }
+}
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+(END)
+        "TableArn": "arn:aws:dynamodb:us-east-1:176527902890:table/dice-rolls",
+        "TableId": "850a661e-54e3-4987-a574-8d960a5d88b7",
+        "BillingModeSummary": {
+            "BillingMode": "PAY_PER_REQUEST",
+            "LastUpdateToPayPerRequestDateTime": "2025-12-03T20:12:39.964000+00:00"
+        },
+        "DeletionProtectionEnabled": false,
+        "WarmThroughput": {
+            "ReadUnitsPerSecond": 12000,
+            "WriteUnitsPerSecond": 4000,
+            "Status": "ACTIVE"
+        }
+    }
+}
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+(END)
+        "TableArn": "arn:aws:dynamodb:us-east-1:176527902890:table/dice-rolls",
+        "TableId": "850a661e-54e3-4987-a574-8d960a5d88b7",
+        "BillingModeSummary": {
+            "BillingMode": "PAY_PER_REQUEST",
+            "LastUpdateToPayPerRequestDateTime": "2025-12-03T20:12:39.964000+00:00"
+        },
+        "DeletionProtectionEnabled": false,
+        "WarmThroughput": {
+            "ReadUnitsPerSecond": 12000,
+            "WriteUnitsPerSecond": 4000,
+            "Status": "ACTIVE"
+        }
+    }
+}
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+(END)
+        "TableArn": "arn:aws:dynamodb:us-east-1:176527902890:table/dice-rolls",
+        "TableId": "850a661e-54e3-4987-a574-8d960a5d88b7",
+        "BillingModeSummary": {
+            "BillingMode": "PAY_PER_REQUEST",
+            "LastUpdateToPayPerRequestDateTime": "2025-12-03T20:12:39.964000+00:00"
+        },
+        "DeletionProtectionEnabled": false,
+        "WarmThroughput": {
+            "ReadUnitsPerSecond": 12000,
+            "WriteUnitsPerSecond": 4000,
+            "Status": "ACTIVE"
+        }
+    }
+}
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+(END)
+
+{
+    "Reservations": [
+        {
+            "ReservationId": "r-0406e73a7a1e18130",
+            "OwnerId": "176527902890",
+            "Groups": [],
+            "Instances": [
+                {
+                    "Architecture": "x86_64",
+                    "BlockDeviceMappings": [
+                        {
+                            "DeviceName": "/dev/xvda",
+                            "Ebs": {
+                                "AttachTime": "2025-12-04T17:08:17+00:00",
+                                "DeleteOnTermination": true,
+                                "Status": "attached",
+                                "VolumeId": "vol-005533a9208e76315"
+                            }
+                        }
+                    ],
+                    "ClientToken": "cd2048df-f328-48cd-b6f9-7ecff297a79c",
+                    "EbsOptimized": false,
+                    "EnaSupport": true,
+                    "Hypervisor": "xen",
+                    "IamInstanceProfile": {
+                        "Arn": "arn:aws:iam::176527902890:instance-profile/csd-demo-instance-profile",
+                        "Id": "AIPASSGPCBCVG6HBSF6I5"
+                    },
+                    "NetworkInterfaces": [
+                        {
+                            "Association": {
+                                "IpOwnerId": "amazon",
+                                "PublicDnsName": "",
+                                "PublicIp": "3.89.85.26"
+                            },
+                            "Attachment": {
+                                "AttachTime": "2025-12-04T17:08:16+00:00",
+                                "AttachmentId": "eni-attach-06978349b4cee4cab",
+                                "DeleteOnTermination": true,
+                                "DeviceIndex": 0,
+                                "Status": "attached",
+                                "NetworkCardIndex": 0
+                            },
+                            "Description": "",
+                            "Groups": [
+                                {
+                                    "GroupId": "sg-092996539b2a9d91a",
+                                    "GroupName": "csd215-demo-ex2-sg"
+                                }
+                            ],
+                            "Ipv6Addresses": [],
+                            "MacAddress": "0e:9a:ce:23:aa:b9",
+                            "NetworkInterfaceId": "eni-02311c18ae6d74212",
+                            "OwnerId": "176527902890",
+                            "PrivateIpAddress": "10.0.0.203",
+                            "PrivateIpAddresses": [
+                                {
+                                    "Association": {
+                                        "IpOwnerId": "amazon",
+                                        "PublicDnsName": "",
+                                        "PublicIp": "3.89.85.26"
+                                    },
+                                    "Primary": true,
+                                    "PrivateIpAddress": "10.0.0.203"
+                                }
+                            ],
+                            "SourceDestCheck": true,
+                            "Status": "in-use",
+                            "SubnetId": "subnet-069274533f1aae2d7",
+                            "VpcId": "vpc-0d91da86919e07892",
+                            "InterfaceType": "interface",
+                            "Operator": {
+                                "Managed": false
+                            }
+                        }
+                    ],
+                    "RootDeviceName": "/dev/xvda",
+                    "RootDeviceType": "ebs",
+                    "SecurityGroups": [
+                        {
+                            "GroupId": "sg-092996539b2a9d91a",
+                            "GroupName": "csd215-demo-ex2-sg"
+                        }
+                    ],
+                    "SourceDestCheck": true,
+                    "Tags": [
+                        {
+                            "Key": "Name",
+                            "Value": "csd215-flask-instance"
+                        }
+                    ],
+                    "VirtualizationType": "hvm",
+                    "CpuOptions": {
+                        "CoreCount": 1,
+                        "ThreadsPerCore": 1
+                    },
+                    "CapacityReservationSpecification": {
+                        "CapacityReservationPreference": "open"
+                    },
+                    "HibernationOptions": {
+                        "Configured": false
+                    },
+                    "MetadataOptions": {
+                        "State": "applied",
+                        "HttpTokens": "required",
+                        "HttpPutResponseHopLimit": 2,
+                        "HttpEndpoint": "enabled",
+                        "HttpProtocolIpv6": "disabled",
+                        "InstanceMetadataTags": "disabled"
+                    },
+                    "EnclaveOptions": {
+                        "Enabled": false
+                    },
+                    "BootMode": "uefi-preferred",
+                    "PlatformDetails": "Linux/UNIX",
+                    "UsageOperation": "RunInstances",
+                    "UsageOperationUpdateTime": "2025-12-04T17:08:16+00:00",
+                    "PrivateDnsNameOptions": {
+                        "HostnameType": "ip-name",
+                        "EnableResourceNameDnsARecord": false,
+                        "EnableResourceNameDnsAAAARecord": false
+                    },
+                    "MaintenanceOptions": {
+                        "AutoRecovery": "default"
+                    },
+                    "CurrentInstanceBootMode": "legacy-bios",
+                    "NetworkPerformanceOptions": {
+                        "BandwidthWeighting": "default"
+                    },
+                    "Operator": {
+                        "Managed": false
+                    },
+                    "InstanceId": "i-0a8ad3cb173c73509",
+                    "ImageId": "ami-0fa3fe0fa7920f68e",
+                    "State": {
+                        "Code": 16,
+                        "Name": "running"
+                    },
+                    "PrivateDnsName": "ip-10-0-0-203.ec2.internal",
+                    "PublicDnsName": "",
+                    "StateTransitionReason": "",
+                    "KeyName": "csd215-demo-ssh-keypair",
+                    "AmiLaunchIndex": 0,
+                    "ProductCodes": [],
+                    "InstanceType": "t2.nano",
+                    "LaunchTime": "2025-12-04T17:48:11+00:00",
+                    "Placement": {
+                        "GroupName": "",
+                        "Tenancy": "default",
+                        "AvailabilityZone": "us-east-1a"
+                    },
+                    "Monitoring": {
+                        "State": "disabled"
+                    },
+                    "SubnetId": "subnet-069274533f1aae2d7",
+                    "VpcId": "vpc-0d91da86919e07892",
+                    "PrivateIpAddress": "10.0.0.203",
+                    "PublicIpAddress": "3.89.85.26"
+                }
+            ]
+        }
+    ]
+}
+
+{
+    "Configuration": {
+        "FunctionName": "csd215-lambda",
+        "FunctionArn": "arn:aws:lambda:us-east-1:176527902890:function:csd215-lambda",
+        "Runtime": "python3.9",
+        "Role": "arn:aws:iam::176527902890:role/LabRole",
+        "Handler": "lambda_app.main",
+        "CodeSize": 2794,
+        "Description": "",
+        "Timeout": 3,
+        "MemorySize": 128,
+        "LastModified": "2025-12-05T03:38:53.000+0000",
+        "CodeSha256": "A8I/vyCAMzSAaZvhCFKgr8JM5BG+dYYvUEgNaQ8xROI=",
+        "Version": "$LATEST",
+        "VpcConfig": {
+            "SubnetIds": [
+                "subnet-062aa33d12760a443"
+            ],
+            "SecurityGroupIds": [
+                "sg-0a91ed14dc86e5cd7"
+            ],
+            "VpcId": "vpc-0d91da86919e07892",
+            "Ipv6AllowedForDualStack": false
+        },
+        "TracingConfig": {
+            "Mode": "PassThrough"
+        },
+        "RevisionId": "e253c9e7-8fb4-4859-a6da-c9bb8b7f764e",
+        "State": "Active",
+        "LastUpdateStatus": "Successful",
+        "PackageType": "Zip",
+        "Architectures": [
+            "x86_64"
+        ],
+        "EphemeralStorage": {
+            "Size": 512
+        },
+        "SnapStart": {
+            "ApplyOn": "None",
+            "OptimizationStatus": "Off"
+        },
+        "RuntimeVersionConfig": {
+            "RuntimeVersionArn": "arn:aws:lambda:us-east-1::runtime:48c0f790371a08d913f94f05bbcb8cb1641dee331fe7924e60fd40126a861f01"
+        },
+        "LoggingConfig": {
+            "LogFormat": "Text",
+            "LogGroup": "/aws/lambda/csd215-lambda"
+        }
+    },
+    "Code": {
+        "RepositoryType": "S3",
+        "Location": "https://prod-iad-c1-djusa-tasks.s3.us-east-1.amazonaws.com/snapshots/176527902890/csd215-lambda-1c6abcc6-e9d0-47e1-816f-0d6d92ff7e9a
+?versionId=QxSYr78iiujmsJollwO21eckVnDvEyXf&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEIn%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLWVhc3QtMSJIMEYCIQCvk4TvagQdSJUZ
+xCXiCYmVy%2BIvtHqX6H%2F1SxApmG%2BY5AIhAI0%2FECspPvij8NNhPFdye3hbDWsUeW7kfkM0XBp%2B0O1uKosCCFEQBBoMNDc5MjMzMDI1Mzc5IgwKs4MHcXwn4QkPwu8q6AGHmRfdCTR9kqSdFJT
+AFlvMq5vTYIoQS5PAxdjEi5BrVsYRcJMUldQXNDR8qP6Dhhxw%2Bl1YJE3efJQK4phnqt5p83c1yemdIGlpQ3OGhh79iIc%2F90gX%2Fvb0artaSzkP%2FMzGvMiGZa9iq0aUP9tqJLRve0R3rZNAyP62
+Wx8MStaghtd%2BkkElsv3R2aYIKS1PYSempvRtfKEmlN8Lv%2FOGU2A276e64QxlsUV%2FB0QW%2FuaCBArlOZ0zS3GMcf5mMIbAeByoWsPukW4cRp4PxSLuulhDdRTInPGLZeNDffznrIkTOJYDwE%2F
+fgqwbMNLHyMkGOowBkxlHPSg6KH1C%2BTCq6JeuhUoj00hVe6kY76BOFPOlbjpW7c0zHwI%2FSWcmLftkYo%2Fm%2BRWv%2BLtcI3yal%2Fa%2Fpzq7CKdKUbokLRajOmwA73Ji2%2BhsAPzwYKp2sMgU
+GrPxXExc4Qc0cNbPORLERI3GQK2p30XPJg%2BkUipHT4uH4PnGGrD5kkD%2BwF0WdMjWMi0%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20251205T034850Z&X-Amz-SignedHeade
+rs=host&X-Amz-Expires=600&X-Amz-Credential=ASIAW7FEDUVRSKGIPG73%2F20251205%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=f0f20bfde3f4acb0cdbde22407ddcb
+6fe2e652fdf5aec62bef17623a0ff5963f"
+    }
+}
