@@ -1,1 +1,14 @@
 name: Test
+
+on:
+    push:
+        branches:
+            - awsproject
+
+
+jobs:
+    test:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v5
+            - uses: actions/checkout@v6.0.1
