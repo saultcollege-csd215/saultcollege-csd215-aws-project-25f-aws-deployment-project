@@ -34,11 +34,11 @@ jobs:
             - name: Dispatch Lambda Deploy Workflow
               uses: benc-uk/workflow-dispatch@v1
               with:
-                workflow: lambda.yml
+                workflow: .github/workflows/lambda.yml
                 ref: aws-lab
 
             - name: Dispatch EC2 Deploy Workflow
               uses: benc-uk/workflow-dispatch@v1
               with:
-                workflow: ec2.yml
+                workflow: .github/workflows/ec2.yml
                 ref: aws-lab
