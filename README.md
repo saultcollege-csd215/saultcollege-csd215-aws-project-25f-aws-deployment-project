@@ -258,7 +258,7 @@ For this workflow, you will use SSH to run a deployment script on the EC2 instan
    2. Set up a job that runs on Ubuntu latest
    3. Add the following steps to the job:
       1. Checkout the LAB BRANCH of your repository code
-      2. Use the `apple-boy/ssh-action` GitHub Action to connect to your EC2 instance via SSH and run a deployment script.
+      2. Use the `appleboy/ssh-action` GitHub Action to connect to your EC2 instance via SSH and run a deployment script.
          - Use the `EC2_KEY` secret for authentication.
          - Use the provided `resources/deploy_ec2.sh` script as the deployment script to run on the EC2 instance.
 4. Add another final step to `.github/workflows/test.yml`...
