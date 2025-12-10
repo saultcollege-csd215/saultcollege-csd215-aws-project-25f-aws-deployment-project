@@ -19,7 +19,7 @@ def save_roll_history(roll_result, source):
 
         item = {
             'roll_id': str(uuid.uuid4()),
-            'timestamp': datetime.now(timezone.utc).isoformat(),
+            'timestamp': int(datetime.now(timezone.utc).isoformat()),
             'source': source,
             'result': str(roll_result)
         }
