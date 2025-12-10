@@ -1,0 +1,3 @@
+We're using nginx in this project because we're using gunicorn WSGI application server and gunicorn can't safely or efficiently serve public HTTP traffic directly from the internet. So nginx is added as a reverse proxy in front of gunicorn.
+
+Gunicorn binds local port 127.0.0.1:8000 and nginx acts as the tools to expose the port globally to the internet through port: 80. Nginx shows the site, take and sanitize request before passing it to gunicorn, basically to protect the backend. 
