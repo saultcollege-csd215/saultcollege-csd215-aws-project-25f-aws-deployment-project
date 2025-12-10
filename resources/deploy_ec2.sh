@@ -6,7 +6,7 @@ set -ex
 
 cd /home/ec2-user/dice
 
-git fetch -all
+git fetch --all
 git switch awsproject
 
 sudo systemctl restart diceapp
