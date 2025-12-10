@@ -4,7 +4,11 @@
 
 cd /home/ec2-user/dice
 
-git pull
+# fetching all the remote branches
+git fetch --all
+
+# switching to my lab branch
+git switch aws-lab
 
 sudo systemctl restart diceapp
 sudo systemctl status diceapp --no-pager -l
