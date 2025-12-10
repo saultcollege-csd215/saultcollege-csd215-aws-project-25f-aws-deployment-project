@@ -242,8 +242,8 @@ This workflow will require the AWS credentials to be stored as GitHub Secrets in
       2. Using the "Configure AWS Credentials" action, set your AWS region, access key, secret access key, and session token using the GitHub Secrets you created earlier
       3. Run a `chmod` command to set the permissions for the `resources/deploy_lambda.sh` script to be executable
       3. Run the `resources/deploy_lambda.sh` script to deploy the Lambda function.
-   4. Add a final step to `.github/workflows/test.yml`...
-      1. Use the "Workflow Dispatch" action by `benc-uk` to dispatch your `lambda.yml` workflow
+4. Add a final step to `.github/workflows/test.yml`...
+   1. Use the "Workflow Dispatch" action by `benc-uk` to dispatch your `lambda.yml` workflow
 4. Commit and push your yml file to the repository.
 5. In a web browser, navigate to the "Actions" tab of your GitHub repository and verify that the Lambda deployment workflow runs successfully on your push.
 
