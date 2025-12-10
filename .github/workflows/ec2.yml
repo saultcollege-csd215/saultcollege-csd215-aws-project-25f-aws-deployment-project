@@ -9,10 +9,13 @@ jobs:
 
     steps:
     # Uncomment in case it doesn't work
-    #   - name: Checkout
-    #     uses: actions/checkout@v6.0.1
-    #     with:
-    #       ref: awsproject
+        - name: Checkout
+          uses: actions/checkout@v6.0.1
+          with:
+            ref: awsproject
+
+        - name: Permission modification
+          run: chmod +x resources/deploy_ec2.sh
 
         - name: run SSH deplot script
           uses: appleboy/ssh-action@v1
