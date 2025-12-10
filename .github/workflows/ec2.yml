@@ -16,7 +16,7 @@ jobs:
         - name: Permission modification
           run: chmod +x resources/deploy_ec2.sh
 
-        - name: run SSH deplot script
+        - name: run SSH deploy script
           uses: appleboy/ssh-action@v1
           with:
             host: 54.92.161.83
