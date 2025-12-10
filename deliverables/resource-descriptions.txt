@@ -1,3 +1,4 @@
+// describe-table 
 $ aws dynamodb describe-table --table-name dice-rolls
 {
     "Table": {
@@ -91,7 +92,7 @@ $ aws dynamodb describe-table --table-name dice-rolls
 :
 
 
-
+// describe-instances
 vscode ➜ /workspaces/aws-project-25f-juanroy012 (awsproject) $ aws ec2 describe-instances
 {
     "Reservations": [
@@ -696,3 +697,24 @@ vscode ➜ /workspaces/aws-project-25f-juanroy012 (awsproject) $ aws ec2 describ
                         "HttpPutResponseHopLimit": 2,
                         "HttpEndpoint": "enabled",
 :
+
+// get-function
+$ aws lambda get-function --function-name csd215-lambda
+{
+    "Configuration": {
+        "FunctionName": "csd215-lambda",
+        "FunctionArn": "arn:aws:lambda:us-east-1:104334256457:function:csd215-lambda",
+        "Runtime": "python3.9",
+        "Role": "arn:aws:iam::104334256457:role/LabRole",
+        "Handler": "lambda_app.main",
+        "CodeSize": 2762,
+        "Description": "",
+        "Timeout": 3,
+        "MemorySize": 128,
+        "LastModified": "2025-12-09T21:50:15.000+0000",
+        "CodeSha256": "7qgd64pD79AjXA9XlQS/S8hvDF/EzTlz+oAHI91pyCo=",
+        "Version": "$LATEST",
+        "VpcConfig": {
+            "SubnetIds": [
+                "subnet-0ed05b72340dc199d"
+            ],
