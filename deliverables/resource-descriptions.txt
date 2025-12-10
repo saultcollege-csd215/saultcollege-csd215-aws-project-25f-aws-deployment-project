@@ -43,7 +43,7 @@
 {
     "Reservations": [
         {
-            "ReservationId": "r-03c3f980affca2b86",
+            "ReservationId": "r-0cfa51d44c0199fa6",
             "OwnerId": "416731243455",
             "Groups": [],
             "Instances": [
@@ -53,14 +53,14 @@
                         {
                             "DeviceName": "/dev/xvda",
                             "Ebs": {
-                                "AttachTime": "2025-12-04T17:02:15+00:00",
+                                "AttachTime": "2025-12-10T14:42:06+00:00",
                                 "DeleteOnTermination": true,
                                 "Status": "attached",
-                                "VolumeId": "vol-001e310abfe7eaa23"
+                                "VolumeId": "vol-0119bdc3341ae62fa"
                             }
                         }
                     ],
-                    "ClientToken": "d083fb5a-d641-4692-aca1-60edfe90a416",
+                    "ClientToken": "f728b9b0-988c-4481-8129-68e763278d50",
                     "EbsOptimized": false,
                     "EnaSupport": true,
                     "Hypervisor": "xen",
@@ -73,11 +73,11 @@
                             "Association": {
                                 "IpOwnerId": "amazon",
                                 "PublicDnsName": "",
-                                "PublicIp": "34.227.161.128"
+                                "PublicIp": "44.212.72.33"
                             },
                             "Attachment": {
-                                "AttachTime": "2025-12-04T17:02:15+00:00",
-                                "AttachmentId": "eni-attach-0ee1f96d1fdacff6f",
+                                "AttachTime": "2025-12-10T14:42:05+00:00",
+                                "AttachmentId": "eni-attach-0b25d06f77c9067ea",
                                 "DeleteOnTermination": true,
                                 "DeviceIndex": 0,
                                 "Status": "attached",
@@ -91,19 +91,19 @@
                                 }
                             ],
                             "Ipv6Addresses": [],
-                            "MacAddress": "12:31:b9:17:37:03",
-                            "NetworkInterfaceId": "eni-00b1d890a213046b9",
+                            "MacAddress": "12:00:38:db:77:23",
+                            "NetworkInterfaceId": "eni-0cb113885d730bb47",
                             "OwnerId": "416731243455",
-                            "PrivateIpAddress": "10.0.0.223",
+                            "PrivateIpAddress": "10.0.0.199",
                             "PrivateIpAddresses": [
                                 {
                                     "Association": {
                                         "IpOwnerId": "amazon",
                                         "PublicDnsName": "",
-                                        "PublicIp": "34.227.161.128"
+                                        "PublicIp": "44.212.72.33"
                                     },
                                     "Primary": true,
-                                    "PrivateIpAddress": "10.0.0.223"
+                                    "PrivateIpAddress": "10.0.0.199"
                                 }
                             ],
                             "SourceDestCheck": true,
@@ -156,7 +156,7 @@
                     "BootMode": "uefi-preferred",
                     "PlatformDetails": "Linux/UNIX",
                     "UsageOperation": "RunInstances",
-                    "UsageOperationUpdateTime": "2025-12-04T17:02:15+00:00",
+                    "UsageOperationUpdateTime": "2025-12-10T14:42:05+00:00",
                     "PrivateDnsNameOptions": {
                         "HostnameType": "ip-name",
                         "EnableResourceNameDnsARecord": false,
@@ -172,20 +172,20 @@
                     "Operator": {
                         "Managed": false
                     },
-                    "InstanceId": "i-0e112785656b93e28",
+                    "InstanceId": "i-02eba1225da61ec41",
                     "ImageId": "ami-0fa3fe0fa7920f68e",
                     "State": {
                         "Code": 16,
                         "Name": "running"
                     },
-                    "PrivateDnsName": "ip-10-0-0-223.ec2.internal",
+                    "PrivateDnsName": "ip-10-0-0-199.ec2.internal",
                     "PublicDnsName": "",
                     "StateTransitionReason": "",
                     "KeyName": "csd215-ssh-keypair",
                     "AmiLaunchIndex": 0,
                     "ProductCodes": [],
                     "InstanceType": "t2.nano",
-                    "LaunchTime": "2025-12-04T17:02:15+00:00",
+                    "LaunchTime": "2025-12-10T17:21:24+00:00",
                     "Placement": {
                         "GroupName": "",
                         "Tenancy": "default",
@@ -196,8 +196,8 @@
                     },
                     "SubnetId": "subnet-0cf319acf6e903041",
                     "VpcId": "vpc-09178d48679018bc2",
-                    "PrivateIpAddress": "10.0.0.223",
-                    "PublicIpAddress": "34.227.161.128"
+                    "PrivateIpAddress": "10.0.0.199",
+                    "PublicIpAddress": "44.212.72.33"
                 }
             ]
         }

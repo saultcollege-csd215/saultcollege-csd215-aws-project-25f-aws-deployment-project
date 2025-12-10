@@ -16,14 +16,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
       - name: SSH Remote Commands
         uses: appleboy/ssh-action@v1.2.4
         with:
-          host: ${{ secrets.EC2_HOST }}
+          host: 44.212.72.33
           username: ec2-user
           key: ${{ secrets.EC2_KEY }}
-          script: |
-            bash /home/ec2-user/dice/resources/deploy_ec2.sh
+          script_path: resources/deploy_ec2.sh
