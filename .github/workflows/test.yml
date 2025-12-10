@@ -6,6 +6,10 @@ on:
         branches:
             - aws-lab
 
+permissions:
+  actions: write
+  contents: read
+
 jobs:
     test:
         runs-on: ubuntu-latest
@@ -26,3 +30,15 @@ jobs:
 
             - name: Run tests
               run: pytest tests
+
+            - name: Dispatch Lambda Deploy Workflow
+              uses: benc-uk/workflow-dispatch@v1
+              with:
+                workflow: lambda.yml
+                ref: aws-lab
+
+            - name: Dispatch EC2 Deploy Workflow
+              uses: benc-uk/workflow-dispatch@v1
+              with:
+                workflow: ec2.yml
+                ref: aws-lab
