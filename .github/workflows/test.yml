@@ -5,6 +5,7 @@ on: #How to trigger the workflow
     push: #Trigger on push to my Lab branch
         branches:
         - FinalLabAWS
+    
 
 jobs: #What to do when triggered 
     test: 
@@ -26,3 +27,15 @@ jobs: #What to do when triggered
 
             - name: Run tests
               run: pytest tests
+
+            - name: Trigger Lambda deploy
+              uses: benc-uk/workflow-dispatch@v1
+              with:
+                  workflow: lambda.yml
+                  ref: FinalLabAWS
+
+            - name: Trigger Ec2 deploy
+              uses: benc-uk/workflow-dispatch@v1
+              with:
+                  workflow: ec2.yml
+                  ref: FinalLabAWS
