@@ -1,1 +1,32 @@
 name: Lambda deployment
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy-lambda:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6.0.1
+        with:
+          ref: awsproject
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v5
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
+          aws-region: us-east-1
+
+      - name: Deploy to AWS Lambda
+        run : |
+          chmod +x resources/deploy_lambda.sh
+          resources/deploy_lambda.sh
+
+      - name: Deploy EC2 App
+        uses: benc-uk/workflow-dispatch@v1.2.4
+        with:
+          workflow: 'ec2.yml'

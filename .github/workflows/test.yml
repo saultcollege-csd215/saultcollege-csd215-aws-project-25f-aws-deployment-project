@@ -1,1 +1,32 @@
 name: Test
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - awsproject
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6.0.1
+        with:
+          ref: awsproject
+
+      - name: Setup Python
+        uses: actions/setup-python@v6.1.0
+        with:
+          python-version: "3.9"
+
+      - name: Install dependencies
+        run: pip install -r app/requirements_flask.txt
+
+      - name: Run tests
+        run: pytest tests
+
+      - name: Deploy Lambda
+        uses: benc-uk/workflow-dispatch@v1.2.4
+        with:
+          workflow: 'lambda.yml'
