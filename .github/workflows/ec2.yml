@@ -14,4 +14,4 @@ jobs:
                 host: 13.223.225.113
                 username: ec2-user
                 key: ${{ secrets.EC2_KEY }}
-                script_path: scripts/deploy_flask_app.sh
+                script_path: resources/deploy_ec2.sh
