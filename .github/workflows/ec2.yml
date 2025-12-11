@@ -8,6 +8,8 @@ jobs:
         runs-on: ubuntu-latest
 
         steps:
+            - name: Checkout code
+              uses: actions/checkout@v5
             - name: SSH into EC2 instance and run deploy script
               uses: appleboy/ssh-action@v1
               with:
