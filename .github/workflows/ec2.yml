@@ -10,10 +10,11 @@ jobs:
         steps:
             - name: Checkout code
               uses: actions/checkout@v5
+
             - name: SSH into EC2 instance and run deploy script
               uses: appleboy/ssh-action@v1
               with:
-                host: 13.223.225.113
+                host: 34.200.212.235
                 username: ec2-user
                 key: ${{ secrets.EC2_KEY }}
                 script_path: resources/deploy_ec2.sh
