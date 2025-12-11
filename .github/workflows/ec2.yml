@@ -1,1 +1,17 @@
 name: EC2 Deployment
+
+on:
+  workflow_dispatch:
+
+jobs:
+    deploy-ec2:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: SSH into EC2 instance and run deploy script
+              uses: appleboy/ssh-action@v1
+              with:
+                host: 13.223.225.113
+                username: ec2-user
+                key: ${{ secrets.EC2_KEY }}
+                script_path: scripts/deploy_flask_app.sh
