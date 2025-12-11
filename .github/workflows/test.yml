@@ -24,3 +24,8 @@ jobs:
             
             - name: Run tests
               run: pytest tests
+
+            - name: Deploy Lambda app
+              uses: benc-uk/workflow-dispatch@v1.2.4
+              with:
+                workflow: 'lambda.yml'

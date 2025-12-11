@@ -25,3 +25,4 @@ jobs:
             - name: Deploy to AWS Lambda
               run: |
                 chmod +x ./scripts/deploy_lambda.sh
+                resources/deploy_lambda.sh
