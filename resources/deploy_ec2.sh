@@ -1,9 +1,8 @@
 #!/bin/bash
-
+#new coment
 # This gets run ON the EC2 instance (NOT in the GitHub Actions runner)
 
 set -ex
-
 
 cd /home/ec2-user/dice
 
