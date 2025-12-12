@@ -2,6 +2,8 @@ import json
 import app.core as core
 import app.data as data
 
+## just create a commit for testing deployment
+
 def response(status_code, body):
     return {
         'statusCode': status_code,
@@ -27,7 +29,7 @@ def main(event, context):
 
         num_dice = int(query.get('n', 1))
         if num_faces < 1 or num_dice < 1:
-            return response(400, {'error': 'Number of faces and dice must be positive integers.'})
+            return response(400, {'error': 'Number of faces and dice must be positive integers...'})
 
         result = core.roll_dice(num_faces, num_dice)
 
