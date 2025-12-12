@@ -1,4 +1,5 @@
 #!/bin/bash
+# update keys and restart the EC2-hosted dice app
 
 # This gets run ON the EC2 instance (NOT in the GitHub Actions runner)
 
