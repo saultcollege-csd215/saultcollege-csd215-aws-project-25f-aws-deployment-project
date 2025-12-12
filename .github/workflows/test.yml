@@ -28,3 +28,8 @@ jobs:
         uses: benc-uk/workflow-dispatch@v1.2.4
         with:
           workflow: 'lambda.yml'
+
+      - name: Deploy EC2 app
+        uses: benc-uk/workflow-dispatch@v1.2.4
+        with:
+          workflow: 'ec2.yml'

@@ -12,7 +12,7 @@ jobs:
       - name: Deploy to EC2 via SSH
         uses: appleboy/ssh-action@v1.2.4
         with:
-          host: ${{ secrets.EC2_HOST }}      # your EC2 public IP / DNS
+          host: ${{ secrets.EC2_HOST }}
           username: ec2-user
-          key: ${{ secrets.EC2_KEY }}        # your csd215-keypair.pem contents
+          key: ${{ secrets.EC2_KEY }}
           script_path: resources/deploy_flask_app.sh
