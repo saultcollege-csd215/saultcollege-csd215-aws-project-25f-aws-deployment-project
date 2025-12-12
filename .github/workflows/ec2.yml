@@ -1,5 +1,5 @@
 # .github/workflows/ec2.yml
-name: EC2 Deploy
+name: EC2 Deployment
 
 on:
   workflow_dispatch:
@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Deploy to EC2 via SSH
+      - name: SSH into EC2 instance and run deploy script
         uses: appleboy/ssh-action@v1.2.4
         with:
           host: ${{ secrets.EC2_HOST }}
