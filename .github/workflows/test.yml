@@ -10,6 +10,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          ref: aws-final-lab
 
       - name: Set up Python 3.9
         uses: actions/setup-python@v5
@@ -17,9 +19,7 @@ jobs:
           python-version: '3.9'
 
       - name: Install dependencies
-        run: |
-          pip install -r app/requirements_flask.txt
+        run: pip install -r app/requirements_flask.txt
 
-      - name: Run tests with pytest
-        run: |
-          pytest
+      - name: Run tests
+        run: pytest tests
