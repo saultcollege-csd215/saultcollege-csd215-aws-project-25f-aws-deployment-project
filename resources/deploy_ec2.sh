@@ -1,4 +1,5 @@
 #!/bin/bash
+# another change just to test
 
 # This gets run ON the EC2 instance (NOT in the GitHub Actions runner)
 

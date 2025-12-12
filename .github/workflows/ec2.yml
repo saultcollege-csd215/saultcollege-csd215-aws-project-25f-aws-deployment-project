@@ -1,16 +1,11 @@
+# .github/workflows/ec2.yml
 name: EC2 Deploy
 
 on:
   workflow_dispatch:
-  workflow_run:
-    workflows: ["Test"]
-    types:
-      - completed
 
 jobs:
   deploy-ec2:
-    # Run if manually triggered OR if Test succeeded
-    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
 
     steps:
@@ -20,5 +15,4 @@ jobs:
           host: ${{ secrets.EC2_HOST }}
           username: ec2-user
           key: ${{ secrets.EC2_KEY }}
-          script: |
-            bash /home/ec2-user/dice/resources/deploy_ec2.sh
+          script_path: resources/deploy_ec2.sh
