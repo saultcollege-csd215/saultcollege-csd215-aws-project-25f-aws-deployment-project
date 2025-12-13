@@ -1,7 +1,12 @@
 import json
 import app.core as core
 import app.data as data
+import lambda_app
 
+# Find the home route and change the message
+@lambda_app.route('/')
+def home():
+    return "Welcome to the Dice Roller v2.0!"  # Changed from v1.0 or original message
 def response(status_code, body):
     return {
         'statusCode': status_code,
