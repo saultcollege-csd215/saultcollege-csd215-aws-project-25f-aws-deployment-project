@@ -1,25 +1,19 @@
 name: Lambda Deployment
 
 on:
-  workflow_run:
-    workflows: ["Test"]
-    types: 
-      - completed
   workflow_dispatch:
 
 jobs:
-  deploy_lambda:
-    if: ${{ github.event.workflow_run.conclusion == 'success' || github.event_name == 'workflow_dispatch' }}
+  deploy:
+    if: ${{ github.event.workflow_run.conclusion == 'success'}}
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v5
-        with:
-          ref: aws-lab
           
       - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v2
+        uses: aws-actions/configure-aws-credentials@v5
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -27,7 +21,9 @@ jobs:
           aws-region: us-east-1
 
       - name: Make deploy script executable
-        run: chmod +x resources/deploy_lambda.sh
+        run: | 
+          chmod +x resources/deploy_lambda.sh
+          resources/deploy_lambda.sh
 
       - name: Run Lambda deployment script
-        run: ./resources/deploy_lambda.sh
+        run: resources/deploy_lambda.sh
