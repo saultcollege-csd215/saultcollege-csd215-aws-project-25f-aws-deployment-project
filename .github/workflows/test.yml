@@ -1,1 +1,42 @@
 name: Test
+
+on:
+    workflow_dispatch:
+    push:
+        branches:
+            - aws-lab
+
+permissions:
+  actions: write
+  contents: read
+
+jobs:
+    test:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v5
+              with:
+                ref: aws-lab
+                
+            - name: Set up Python
+              uses: actions/setup-python@v6
+              with: 
+                python-version: '3.9'
+            
+            - name: Install dependencies
+              run: pip install -r app/requirements_flask.txt
+
+            - name: Run tests
+              run: pytest tests
+
+            - name: Dispatch Lambda Deploy Workflow
+              uses: benc-uk/workflow-dispatch@v1
+              with:
+                workflow: 'lambda.yml'
+
+            - name: Dispatch EC2 Deploy Workflow
+              uses: benc-uk/workflow-dispatch@v1
+              with:
+                workflow: 'ec2.yml'
