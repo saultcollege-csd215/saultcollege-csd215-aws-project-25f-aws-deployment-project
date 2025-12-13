@@ -1,0 +1,29 @@
+My Cost Analysis: EC2 vs Lambda
+
+EC2 Cost:
+Instance 
+type: t2.nano
+Pricing on-demand, us-east-1 roughly $0.0058/hour
+The usage is 730 hours per month
+tenancy is shared by default
+
+Cost:
+t2.nano is roughly $0.0058/hour
+And Monthly is equal to 0.0058 × 730 = $4.23
+
+Lambda cost:
+request charge is equal to $0.20 / 1,000,000
+= $0.00000020
+The compute charge is:
+128 mb = 0.125 GB
+0.125 x 0.1 x 0.0000166667
+= $0.000000208
+The total per request is roughly: $0.000000408
+
+If we were to divide the cost of the EC2 cost by the Lambda cost per request, we would divide 4.23 / 0.000000408 which would then give us roughly 10,360,000 requests per month
+
+Conclusion:
+A t2.nano EC2 instance that is running continually costs about $4.23 per month and the AWS lambda function (128 mb memory, approx. 100 ms execution time) costs approximately $0.00000408 per request, which includes the requests and compute charges.
+And at approx 10 mill requests per month, the lamba's total costs is equal to that of the monthly EC2 cost. Now belove this usage level, the lambda is more cost effect due to its pay per request pricing model. Now if we go above this, the EC2 becomes the cheaper option because of its fixed monthly cost pricing.
+
+Finally, due to the fact that I could not have access to the proper AWS pricing calculator, I had to use the public version which did not require a login. However the issue for my math and screenshot not being accurate lies in the fact that I could not find the proper options as they were not available (ie. t2.nano). Please put this into consideration when grading my work
