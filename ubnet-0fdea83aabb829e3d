@@ -1,0 +1,25 @@
+{
+    "Subnet": {
+        "AvailabilityZoneId": "use1-az6",
+        "MapCustomerOwnedIpOnLaunch": false,
+        "OwnerId": "533267113995",
+        "AssignIpv6AddressOnCreation": false,
+        "Ipv6CidrBlockAssociationSet": [],
+        "SubnetArn": "arn:aws:ec2:us-east-1:533267113995:subnet/subnet-0fdea83aabb829e3d",
+        "EnableDns64": false,
+        "Ipv6Native": false,
+        "PrivateDnsNameOptionsOnLaunch": {
+            "HostnameType": "ip-name",
+            "EnableResourceNameDnsARecord": false,
+            "EnableResourceNameDnsAAAARecord": false
+        },
+        "SubnetId": "subnet-0fdea83aabb829e3d",
+        "State": "available",
+        "VpcId": "vpc-04f0833c4a24a0ced",
+        "CidrBlock": "10.0.0.0/25",
+        "AvailableIpAddressCount": 123,
+        "AvailabilityZone": "us-east-1a",
+        "DefaultForAz": false,
+        "MapPublicIpOnLaunch": false
+    }
+}
