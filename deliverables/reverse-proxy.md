@@ -1,0 +1,1 @@
+Nginx acts as a reverse proxy between clients and the Flask application. It forwards incoming requests to the app, allowing users to access it via standard HTTP without specifying a port.

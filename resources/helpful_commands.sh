@@ -37,7 +37,7 @@ aws ec2 delete-key-pair --key-name $key_name
 ## Note: set permissions on the key file to be read-only by your user
 ## chmod 400 keypair.pem
 
-# VPC / Subnet
+# VPC / Subnet subnet-0fdea83aabb829e3d
 
 aws ec2 create-vpc --cidr-block $cidrblock 
 aws ec2 create-subnet --vpc-id $vpc_id --cidr-block $cidrblock --availability-zone $az
@@ -73,9 +73,10 @@ aws ec2 run-instances --image-id $ami_image_id --count 1 --instance-type t2.nano
 aws ec2 stop-instances --instance-ids $id
 aws ec2 stop-instances --instance-ids $id --hibernate
 aws ec2 terminate-instances --instance-ids $id
+aws ec2 run-instances --image-id $ami_image_id --count 1 --instance-type t2.nano --key-name csd215-keypair --iam-instance-profile Name=csd215-instance-profile --security-group-ids       
 
 # Lambda
-aws lambda create-function --function-name $name --runtime python3.9 --role $role_name --handler lambda_app.main --vpc-config SubnetIds=$subnet_id,SecurityGroupIds=$security_group_id --zip-file fileb://$path_to_zip_file
+aws lambda create-function --function-name csd215-lambda --runtime python3.9 --role LabRole --handler lambda_app.main --vpc-config SubnetIds=subnet-0fdea83aabb829e3d,SecurityGroupIds=sg-0c2211cc63429ae3d --zip-file fileb://resources/lambda_placeholder.zip
 aws lambda update-function-code --function-name $name --zip-file $path_to_zip_file
 
 ## Make function publicly accessible via Function URL
@@ -87,3 +88,5 @@ aws lambda remove-permission --function-name $name --statement-id allow-public-a
 # Test invoking the lambda function
 aws lambda invoke --function-name $name lambda-out.txt
 aws lambda invoke --function-name $name --payload file://$path_to_json_payload_file --cli-binary-format raw-in-base64-out lambda-out.txt
+
+aws ec2 run-instances --image-id $ami_image_id --count 1 --instance-type t2.nano --key-name csd215-keypair --iam-instance-profile Name=csd215-instance-profile --security-group-ids sg-0aca96c7e74575d5c --subnet-id subnet-0b0cf8d9eb9e8e8b3 --associate-public-ip-address --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=csd215-flask-instance}]' --user-data file:///workspaces/aws-project-25f-Smallsil/resources/user_data.sh
