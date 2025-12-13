@@ -20,11 +20,13 @@ The goal of this project is to practice
 
 ## Setup
 
+1. Ensure that Docker Desktop, VS Code, and Git are installed on your machine.
+1. Ensure that the "Remote Development" extension pack is installed in VS Code.
 1. Open this repository as a Devcontainer in VS Code
 2. Create a branch off of `main` and do your work for this project in that branch.
 2. Ensure you are in the virtual Python evironment (you should see `(.venv)` at the start of your terminal prompt)
 
-   > If not, run `source ./venv/bin/activate` in the terminal to activate it. You may need to do this each time you load the Devcontainer.
+   > If not, run `source .venv/bin/activate` in the terminal to activate it. You may need to do this each time you load the Devcontainer.
 2. Log in to AWS Academy and open the AWS Academy Learner Lab environment
 3. Click the "Start Lab" button and wait for the AWS environment to initialize
 4. Open the "AWS Details" button, then the "Show" button beside "AWS CLI"
