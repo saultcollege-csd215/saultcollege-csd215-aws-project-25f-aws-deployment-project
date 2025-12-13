@@ -137,3 +137,68 @@ Launch and connect to an EC2 instance
         }
     ]
 }
+Lambda
+{
+    "Configuration": {
+        "FunctionName": "csd215-lambda",
+        "FunctionArn": "arn:aws:lambda:us-east-1:533267113995:function:csd215-lambda",
+        "Runtime": "python3.9",
+        "Role": "arn:aws:iam::533267113995:role/LabRole",
+        "Handler": "lambda_app.main",
+        "CodeSize": 2764,
+        "Description": "",
+        "Timeout": 3,
+        "MemorySize": 128,
+        "LastModified": "2025-12-13T03:11:56.000+0000",
+        "CodeSha256": "21laMKC6wqaD/rDKDfPSC8uXZKyp01mb/f4wuouRYEI=",
+        "Version": "$LATEST",
+        "VpcConfig": {
+            "SubnetIds": [
+                "subnet-0fdea83aabb829e3d"
+            ],
+            "SecurityGroupIds": [
+                "sg-0c2211cc63429ae3d"
+            ],
+            "VpcId": "vpc-04f0833c4a24a0ced",
+            "Ipv6AllowedForDualStack": false
+        },
+        "TracingConfig": {
+            "Mode": "PassThrough"
+        },
+        "RevisionId": "4bbe9867-0c0b-4538-95ca-9b17d772cdde",
+        "State": "Active",
+        "LastUpdateStatus": "Successful",
+        "PackageType": "Zip",
+        "Architectures": [
+            "x86_64"
+        ],
+        "EphemeralStorage": {
+            "Size": 512
+        },
+        "SnapStart": {
+            "ApplyOn": "None",
+            "OptimizationStatus": "Off"
+        },
+        "RuntimeVersionConfig": {
+            "RuntimeVersionArn": "arn:aws:lambda:us-east-1::runtime:df84153e74df669a5c21d51b7260bd9ff56a4a77e7bb2fe7c15c1cbdf7bb9
+d80"
+        },
+        "LoggingConfig": {
+            "LogFormat": "Text",
+            "LogGroup": "/aws/lambda/csd215-lambda"
+        }
+    },
+    "Code": {
+        "RepositoryType": "S3",
+        "Location": "https://prod-iad-c1-djusa-tasks.s3.us-east-1.amazonaws.com/snapshots/533267113995/csd215-lambda-ee384deb-bd6
+2-4f39-a664-758132e20103?versionId=w.viHOeiqT3DJvCi6JBvHO7fO7Ctnrck&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEEgaCXVzLWVhc3QtMSJGMEQC
+IF6I9JOHhSMYCsvm9BN9sDYkTK1lQBmd7ZuVXKXjzFzGAiA%2B%2FpVo3%2FeW2MwxFAItmCKEJyF9sM1s15R6J5zEF9NUeyqLAggQEAQaDDQ3OTIzMzAyNTM3OSIMXeL
+uetIp%2FLHkMs5ZKugBpIkDeq503KoInaJe%2BJFhidquVG9tc6tl0NiGx7BbHdu4392VuvfxUXnrp8Hpja0O2dLxNLIt%2Bdg%2FATP9se0pA1djnyVOIOC4T7VlglgN
+N9aVTgxfevc0Y31pBU1LWEF4L66WzfJTHDXTKB17q2FBBTaSpSg3k3IVEGWyhDKv2SCGUlHfafBGuzi0lzQti8F067s0EuknFCqFLDqm5KJy7xIGE09%2F3IqCeUUUhB6
+Q5bpnTIL%2BYuoT4RDY0Hp8fr5qGED7sr0q4RY7h8csQvUJtA7tDEKUk%2BxIFv3mgZDtZrQIGofogLcbPTDYwfLJBjqOAVy08nBa42ns5BuiAmvlenxATwSnydRqvILP
+a%2F2FEWfy25n5kaTrNb4MgPMVc60jJx%2Fn5HHyYattv%2FpoXQ9fl%2Fv2y%2Br1I8x3s52NRjWnUkn1BtKfgi0DKuiPj0hDF9TyrKeVcHjXbNO4rQpfLfSFWvXKKyO
+neS8YqSWGVFlOIMDvDo7a1f50KV6PxhFc6FY%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20251213T032958Z&X-Amz-SignedHeaders=host&X-A
+mz-Expires=600&X-Amz-Credential=ASIAW7FEDUVRUT7XXVUJ%2F20251213%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=9ac027746a3ac8886
+0c601462b9231e696a00cbf0fe4f5064aaedeca422e8e0f"
+    }
+}
