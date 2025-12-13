@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # --- Configuration ---
-LAMBDA_NAME="<the name of your lambda function>"
+LAMBDA_NAME="csd215-lambda"
 REGION="us-east-1"
 ROOT=.
 SOURCE_DIR="$ROOT/app"
@@ -34,8 +34,7 @@ cd ..
 
 echo "[4/4] Deploying to AWS Lambda..."
 
-# Replace these two lines with a command that updates your Lambda function code with the new $ZIP_FILE
-echo "You need to update your deployment script to actually deploy the Lambda function."
+aws lambda update-function-code --function-name $LAMBDA_NAME --zip-file fileb://$ZIP_FILE
 exit 1
 
 
