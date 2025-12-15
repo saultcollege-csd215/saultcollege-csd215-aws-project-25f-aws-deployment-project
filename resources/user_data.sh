@@ -1,6 +1,10 @@
 #!/bin/bash
 
+# -e : exit immediately on error
+# -u : treat unset variables as an error
+# -x : print the commands as they get executed (so they show up in GitHub Actions logs)
 set -eux
+
 
 # Update system packages and install needed software
 dnf update -y
