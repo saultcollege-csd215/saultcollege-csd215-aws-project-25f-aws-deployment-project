@@ -179,10 +179,15 @@ You will start by creating a placeholder lambda function. Then you will complete
 2. Make your Lambda function publicly accessible using a Function URL:
    1. Create a Function URL config with an `auth_type` of `NONE` (so that no authentication is required to use your Lambda function)
    2. Add the following permissions to your Lambda function:
-      - Action: `lambda:InvokeFunctionUrl`
-      - Principle: `"*"` (to allow anyone permission)
-      - URL Auth Type: `NONE`
-      - Statement id: some unique name to identify this permission policy
+      1. InfokeFunction
+         - Action: `lambda:InvokeFunction`
+         - Principle: `"*"` (to allow anyone permission)
+         - URL Auth Type: `NONE`
+         - Statement id: some unique name to identify this permission policy  
+      2. InvokeFunctionUrl
+         - Action: `lambda:InvokeFunctionUrl`
+         - Principle: `"*"` (to allow anyone permission)
+         - Statement id: some unique name to identify this permission policy
 4. Use the `aws lambda invoke` command to test the function. You may use the provided `resources/lambda_playload.json` file as the input payload. Verify that the function executes successfully.
 5. Use the `aws lambda list-function-url-configs` to determine the function URL for your Lambda function.
 6. Using a web browser, navigate to the function URL of your Lambda function. You should see a 'Hello' message.
