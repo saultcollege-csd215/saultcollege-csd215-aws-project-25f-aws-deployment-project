@@ -12,25 +12,29 @@ The goal of this project is to practice
 
 ## Project Structure
 
-- `.aws/credentials`: AWS credentials file.
-- `.github/workflows/`: GitHub Actions workflows for CI/CD.
+- `.aws/credentials`: AWS credentials file to which you copy the credentials given by AWS Academy.
+- `.github/workflows/`: GitHub Actions workflows for CI/CD (the final section of this project).
 - `app/`: The application code.
-- `resources/`: Useful scripts and other resource files.
-- `tests/`: Test cases for the application.
+- `resources/`: Useful scripts and other resource files used in this project.
+- `tests/`: Test cases for the application (again used in the final CI/CD section).
 
 ## Setup
 
 1. Ensure that Docker Desktop, VS Code, and Git are installed on your machine.
 1. Ensure that the "Remote Development" extension pack is installed in VS Code.
-1. Open this repository as a Devcontainer in VS Code
-2. Create a branch off of `main` and do your work for this project in that branch.
+1. **IMPORTANT**: Ensure that Docker Desktop is running before you open the Devcontainer in VS Code.
+1. Open this repository as a Devcontainer in VS Code. **NOTE**: The first time you do this, it may take a while for the Devcontainer to build and load as it needs to set up the Python environment and install dependencies. You can click the "show log" link in the popup that appears to see the build logs and monitor the progress.
 2. Ensure you are in the virtual Python evironment (you should see `(.venv)` at the start of your terminal prompt)
 
    > If not, run `source .venv/bin/activate` in the terminal to activate it. You may need to do this each time you load the Devcontainer.
-2. Log in to AWS Academy and open the AWS Academy Learner Lab environment
-3. Click the "Start Lab" button and wait for the AWS environment to initialize
-4. Open the "AWS Details" button, then the "Show" button beside "AWS CLI"
-5. Copy the entire contents shown in the text box into the `.aws/credentials` file. You can test that it worked by running `aws sts get-caller-identity` in the terminal. You should see your AWS account details returned.
+
+2. Create a Git branch off of `main` and do your work for this project in that branch.
+
+2. Log in to AWS Academy and open the AWS Academy Learner Lab course.
+2. Click on the "Modules" link, then locate the "AWS Academy Learner Lab" module and click on the "Launch AWS Academy Learner Lab" link.
+3. Click the "Start Lab" button and wait for the AWS environment to initialize (the dot beside the "AWS" link near the top left will turn from red to yellow as the environment is initializing then to green when the environment is ready).
+4. Open the "AWS Details" button, then click the "Show" button beside "AWS CLI"
+5. Copy the **ENTIRE** contents (including the `[default]` header) shown in the text box into the `.aws/credentials` file. You can test that it worked by running `aws sts get-caller-identity` in the terminal. You should see your AWS account details returned.
 
     > **IMPORTANT:** Any time you restart the Learner Lab environment, or the environment times out, you will need to repeat the above 2 steps to update the AWS credentials. (They change on every restart.)
 
