@@ -1,5 +1,9 @@
 FROM mcr.microsoft.com/vscode/devcontainers/python:3.9
 
+# Remove broken Yarn repository (so that apt-update doesn't fail)
+RUN rm -f /etc/apt/sources.list.d/yarn.list \
+    /etc/apt/sources.list.d/yarn.sources
+
 # Docker
 RUN apt-get update && apt-get install -y \
     docker.io \
