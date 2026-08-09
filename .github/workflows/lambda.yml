@@ -1,6 +1,8 @@
 name: Lambda deployment
 
 on:
+  push:
+    branches: [ "dev-assignment" ]
   workflow_run:
     workflows: ["Test"]
     types:
@@ -9,8 +11,8 @@ on:
 
 jobs:
   deploy:
-    if: ${{ github.event.workflow_run.conclusion == 'success' || github.event_name == 'workflow_dispatch' }}
     runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'push' || github.event.workflow_run.conclusion == 'success' || github.event_name == 'workflow_dispatch' }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
