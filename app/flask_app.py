@@ -20,7 +20,7 @@ def roll_dice(num_faces):
     if num_faces < 1 or num_dice < 1:
         return jsonify({'error': 'Number of faces and number of dice must be positive integers.'}), 400
 
-    print(f"Rolling {num_dice} d{num_faces} dice...")  # CI/CD pipeline test change
+    print(f"Rolling {num_dice} d{num_faces} dice...")  # CI/CD pipeline trigger
 
     result = core.roll_dice(num_faces, num_dice)
 
