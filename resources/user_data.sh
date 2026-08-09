@@ -15,6 +15,9 @@ chown ec2-user:ec2-user $APP_DIR
 # Clone your application repository (replace with your repo URL)
 git clone https://github.com/saultcollege-csd215/aws-project-25f-gaganjohal07.git $APP_DIR
 
+# NOTE: chown above runs before this clone, so cloned files stay root-owned,
+# breaking the SSH deploy step. Fixed manually on the running instance for now.
+
 cd $APP_DIR
 # Setup Python virtual environment and install dependencies
 python3 -m venv .venv

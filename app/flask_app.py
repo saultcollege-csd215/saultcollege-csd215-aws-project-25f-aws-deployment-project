@@ -20,10 +20,11 @@ def roll_dice(num_faces):
     if num_faces < 1 or num_dice < 1:
         return jsonify({'error': 'Number of faces and number of dice must be positive integers.'}), 400
 
+    print(f"Rolling {num_dice} d{num_faces} dice...")  # CI/CD pipeline test change
+
     result = core.roll_dice(num_faces, num_dice)
 
     data.save_roll_history(result, source='flask_app')
-
     return jsonify(result)
     
 if __name__ == '__main__':
