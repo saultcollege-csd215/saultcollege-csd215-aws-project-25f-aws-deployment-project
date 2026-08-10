@@ -2,33 +2,51 @@
 
 
 
-In this architecture, Nginx acts as a reverse proxy sitting in front of the Python Flask application (WSGI server).
+In this setup, nginx sits in front of the Flask application. It listens for
+
+HTTP requests on port 80 and forwards them to Gunicorn, which is running
+
+locally on port 8000.
 
 
 
-\## Key Functions \& Benefits:
+\## Why use nginx?
 
 
 
-1\. \*\*Security \& Protocol Handling\*\*:
+\- \*\*Keeps Gunicorn private:\*\* Gunicorn listens on `127.0.0.1:8000`, so it is
 
-&#x20;  - Nginx handles standard HTTP traffic on port 80 and routes internal requests to Flask (running locally on port 5000). 
+&#x20; not directly exposed to the internet. Users access the application through
 
-&#x20;  - Direct exposure of the Python WSGI application server to public internet traffic is avoided, reducing potential attack surfaces.
-
-
-
-2\. \*\*Performance \& Traffic Efficiency\*\*:
-
-&#x20;  - Nginx handles high-concurrency connection management, buffering, and slow clients far more efficiently than Python application servers.
-
-&#x20;  - It can efficiently serve static assets and handle SSL/TLS termination if HTTPS is added.
+&#x20; nginx on port 80.
 
 
 
-3\. \*\*Production Readiness \& Reliability\*\*:
+\- \*\*Handles incoming HTTP traffic:\*\* Nginx receives requests from clients and
 
-&#x20;  - It integrates seamlessly with systemd to maintain continuous uptime and health monitoring.
+&#x20; passes them to the Flask application through Gunicorn.
 
-&#x20;  - It allows seamless app updates and load balancing without dropping incoming connections.
+
+
+\- \*\*Better handling of connections:\*\* Nginx is designed to handle many
+
+&#x20; incoming connections efficiently and can handle things like buffering and
+
+&#x20; slow clients before passing requests to the application.
+
+
+
+\- \*\*Adds flexibility:\*\* Nginx can also be used for features such as SSL/TLS
+
+&#x20; termination, serving static files, rate limiting, and load balancing if the
+
+&#x20; application needs them in the future.
+
+
+
+\- \*\*Works well with systemd:\*\* In this setup, both nginx and the Flask/Gunicorn
+
+&#x20; application are managed as systemd services, so they can start automatically
+
+&#x20; and be restarted if needed.
 
