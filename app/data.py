@@ -1,8 +1,7 @@
 import boto3
 import os
 import uuid
-from datetime import datetime
-
+from datetime import datetime, timezone
 # Allow table name to be overridden by Env Var (useful for Terraform integration)
 TABLE_NAME = os.environ.get('DYNAMODB_TABLE', 'dice-rolls')
 
@@ -17,7 +16,7 @@ def save_roll_history(roll_result, source):
         
         item = {
             'roll_id': str(uuid.uuid4()),
-            'timestamp': datetime.now(datetime.timezone.utc).isoformat(),
+            'timestamp': int(datetime.now(timezone.utc).timestamp()),
             'source': source,
             'result': str(roll_result)
         }
