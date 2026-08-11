@@ -25,3 +25,15 @@ jobs:
 
       - name: Run tests
         run: pytest
+
+      - name: Trigger Lambda Deployment
+        uses: benc-uk/workflow-dispatch@v1
+        with:
+          workflow: lambda.yml
+          ref: LAB
+          
+      - name: Trigger EC2 Deployment
+        uses: benc-uk/workflow-dispatch@v1
+        with:
+          workflow: ec2.yml
+          ref: LAB
