@@ -1,1 +1,24 @@
-name: EC2 Deployment
+name: Deploy EC2
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy-ec2:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout LAB branch
+        uses: actions/checkout@v3
+        with:
+          ref: LAB
+
+      - name: Deploy to EC2
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ec2-user
+          key: ${{ secrets.EC2_KEY }}
+          script: |
+            chmod +x resources/deploy_ec2.sh
+            ./resources/deploy_ec2.sh

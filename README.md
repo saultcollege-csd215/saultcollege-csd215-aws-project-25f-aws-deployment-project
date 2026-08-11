@@ -12,25 +12,29 @@ The goal of this project is to practice
 
 ## Project Structure
 
-- `.aws/credentials`: AWS credentials file.
-- `.github/workflows/`: GitHub Actions workflows for CI/CD.
+- `.aws/credentials`: AWS credentials file to which you copy the credentials given by AWS Academy.
+- `.github/workflows/`: GitHub Actions workflows for CI/CD (the final section of this project).
 - `app/`: The application code.
-- `resources/`: Useful scripts and other resource files.
-- `tests/`: Test cases for the application.
+- `resources/`: Useful scripts and other resource files used in this project.
+- `tests/`: Test cases for the application (again used in the final CI/CD section).
 
 ## Setup
 
 1. Ensure that Docker Desktop, VS Code, and Git are installed on your machine.
 1. Ensure that the "Remote Development" extension pack is installed in VS Code.
-1. Open this repository as a Devcontainer in VS Code
-2. Create a branch off of `main` and do your work for this project in that branch.
+1. **IMPORTANT**: Ensure that Docker Desktop is running before you open the Devcontainer in VS Code.
+1. Open this repository as a Devcontainer in VS Code. **NOTE**: The first time you do this, it may take a while for the Devcontainer to build and load as it needs to set up the Python environment and install dependencies. You can click the "show log" link in the popup that appears to see the build logs and monitor the progress.
 2. Ensure you are in the virtual Python evironment (you should see `(.venv)` at the start of your terminal prompt)
 
    > If not, run `source .venv/bin/activate` in the terminal to activate it. You may need to do this each time you load the Devcontainer.
-2. Log in to AWS Academy and open the AWS Academy Learner Lab environment
-3. Click the "Start Lab" button and wait for the AWS environment to initialize
-4. Open the "AWS Details" button, then the "Show" button beside "AWS CLI"
-5. Copy the entire contents shown in the text box into the `.aws/credentials` file. You can test that it worked by running `aws sts get-caller-identity` in the terminal. You should see your AWS account details returned.
+
+2. Create a Git branch off of `main` and do your work for this project in that branch.
+
+2. Log in to AWS Academy and open the AWS Academy Learner Lab course.
+2. Click on the "Modules" link, then locate the "AWS Academy Learner Lab" module and click on the "Launch AWS Academy Learner Lab" link.
+3. Click the "Start Lab" button and wait for the AWS environment to initialize (the dot beside the "AWS" link near the top left will turn from red to yellow as the environment is initializing then to green when the environment is ready).
+4. Open the "AWS Details" button, then click the "Show" button beside "AWS CLI"
+5. Copy the **ENTIRE** contents (including the `[default]` header) shown in the text box into the `.aws/credentials` file. You can test that it worked by running `aws sts get-caller-identity` in the terminal. You should see your AWS account details returned.
 
     > **IMPORTANT:** Any time you restart the Learner Lab environment, or the environment times out, you will need to repeat the above 2 steps to update the AWS credentials. (They change on every restart.)
 
@@ -172,17 +176,29 @@ You will start by creating a placeholder lambda function. Then you will complete
      - Security group: Your `csd215-lambda-sg` security group
    - Use the provided `resources/lambda_placeholder.zip` file as the deployment package.
    - Handler: `lambda_app.main` (i.e. the `main` function in the `lambda_app.py` file is the entry point)
-3. Use the `aws lambda invoke` command to test the function. You may use the provided `resources/lambda_playload.json` file as the input payload. Verify that the function executes successfully.
-4. Use the `aws lambda list-function-url-configs` to determine the function URL for your Lambda function.
-5. Using a web browser, navigate to the function URL of your Lambda function. You should see a 'Hello' message.
-6. Open the `resources/deploy_lambda.sh` script and complete it to automate the process of packaging and deploying the Lambda function code.
+2. Make your Lambda function publicly accessible using a Function URL:
+   1. Create a Function URL config with an `auth_type` of `NONE` (so that no authentication is required to use your Lambda function)
+   2. Add the following permissions to your Lambda function:
+      1. InfokeFunction
+         - Action: `lambda:InvokeFunction`
+         - Principle: `"*"` (to allow anyone permission)
+         - URL Auth Type: `NONE`
+         - Statement id: some unique name to identify this permission policy  
+      2. InvokeFunctionUrl
+         - Action: `lambda:InvokeFunctionUrl`
+         - Principle: `"*"` (to allow anyone permission)
+         - Statement id: some unique name to identify this permission policy
+4. Use the `aws lambda invoke` command to test the function. You may use the provided `resources/lambda_playload.json` file as the input payload. Verify that the function executes successfully.
+5. Use the `aws lambda list-function-url-configs` to determine the function URL for your Lambda function.
+6. Using a web browser, navigate to the function URL of your Lambda function. You should see a 'Hello' message.
+7. Open the `resources/deploy_lambda.sh` script and complete it to automate the process of packaging and deploying the Lambda function code.
    1. OBSERVE: The script packages the application code into a ZIP file.
    2. MODIFY: Set the `LAMBDA_NAME` variable to your Lambda function name.
    2. MODIFY: Add the AWS CLI command in step 4 of the script to update the Lambda function code with the new package.
-7. Run the `resources/deploy_lambda.sh` script to deploy the Lambda function code.
-8. Verify that your Lambda function was updated using the CLI or a web browser.
+8. Run the `resources/deploy_lambda.sh` script to deploy the Lambda function code.
+9. Verify that your Lambda function was updated using the CLI or a web browser.
    1. Load at least a few different `/roll/d#?n=#` requests.
-9. DELIVERABLES:
+10. DELIVERABLES:
    1. Take a screenshot of the web browser showing the Lambda function output. Save this screenshot as `deliverables/lambda-function.png`.
    2. Add the output of the `get-function` command for your Lambda function to `deliverables/resource-descriptions.txt`.
 
@@ -200,10 +216,10 @@ Then you will write deployment workflows for both the Flask app and the Lambda f
 
 In `.github/workflows/test.yml`...
 
-1. Trigger the workflow on every push to the repository
+1. Trigger the workflow on every push to the LAB BRANCH of your repository
 2. Set up a job that runs on Ubuntu latest
 3. Add the following steps to the job:
-   1. Checkout the repository code
+   1. Checkout the LAB BRANCH of your repository code
    2. Set up Python 3.9
    3. Install the required Python packages from `app/requirements_flask.txt`
    4. Run the tests using `pytest`
@@ -224,17 +240,15 @@ This workflow will require the AWS credentials to be stored as GitHub Secrets in
      >
      >  Also note that in a production environment, you would only need to store the access key ID and secret access key. Session tokens are ONLY required for temporary credentials like those provided by AWS Academy Learner Labs.
 3. In `.github/workflows/lambda.yml`...
-   1. Trigger the workflow on 
-      - Completion of the "Test" workflow
-      - Manual workflow dispatch
-   2. Set up a job that
-      - Only runs if the "Test" workflow succeeded
-      - Runs on Ubuntu latest
+   1. Trigger the workflow on manual workflow dispatch
+   2. Set up a job that runs on Ubuntu latest
    3. Add the following steps to the job:
-      1. Checkout the repository code
-      2. Configure AWS credentials using the GitHub Secrets you created earlier
-      3. Set the permissions for the `resources/deploy_lambda.sh` script to be executable
+      1. Checkout the LAB BRANCH of your repository code
+      2. Using the "Configure AWS Credentials" action, set your AWS region, access key, secret access key, and session token using the GitHub Secrets you created earlier
+      3. Run a `chmod` command to set the permissions for the `resources/deploy_lambda.sh` script to be executable
       3. Run the `resources/deploy_lambda.sh` script to deploy the Lambda function.
+4. Add a final step to `.github/workflows/test.yml`...
+   1. Use the "Workflow Dispatch" action by `benc-uk` to dispatch your `lambda.yml` workflow
 4. Commit and push your yml file to the repository.
 5. In a web browser, navigate to the "Actions" tab of your GitHub repository and verify that the Lambda deployment workflow runs successfully on your push.
 
@@ -245,17 +259,15 @@ For this workflow, you will use SSH to run a deployment script on the EC2 instan
 1. In your GitHub repository, navigate to "Settings" > "Secrets and variables" > "Actions"
 2. Add a key named `EC2_KEY` and paste the entire contents of your private key file (`.pem`) as the value.
 3. In `.github/workflows/ec2.yml`...
-   1. Trigger the workflow on 
-      - Completion of the "Test" workflow
-      - Manual workflow dispatch
-   2. Set up a job that
-      - Only runs if the "Test" workflow succeeded
-      - Runs on Ubuntu latest
+   1. Trigger the workflow on manual workflow dispatch
+   2. Set up a job that runs on Ubuntu latest
    3. Add the following steps to the job:
-      1. Checkout the repository code
-      2. Use the `apple-boy/ssh-action` GitHub Action to connect to your EC2 instance via SSH and run a deployment script.
+      1. Checkout the LAB BRANCH of your repository code
+      2. Use the `appleboy/ssh-action` GitHub Action to connect to your EC2 instance via SSH and run a deployment script.
          - Use the `EC2_KEY` secret for authentication.
          - Use the provided `resources/deploy_ec2.sh` script as the deployment script to run on the EC2 instance.
+4. Add another final step to `.github/workflows/test.yml`...
+      1. Use the "Workflow Dispatch" action by `benc-uk` to dispatch your `ec2.yml` workflow
 4. Commit and push your yml file to the repository.
 5. In a web browser, navigate to the "Actions" tab of your GitHub repository and verify that the EC2 deployment workflow runs successfully on your push.
 
@@ -267,7 +279,15 @@ For this workflow, you will use SSH to run a deployment script on the EC2 instan
 4. Verify that your changes are live by accessing your Flask/Lambda app in a web browser.
 
    > **NOTE:** If you changed your Flask app, you may need to clear your browser cache or do a hard refresh (Ctrl+F5) to see the changes.
+<<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+   
+>>>>>>> 9f67a0e (Initial commit)
+=======
+
+>>>>>>> 49107bd (Submission instructions)
 5. DELIVERABLES:
    1. Take a screenshot of the "Actions" tab showing the successful deployment workflows. Save this screenshot as `deliverables/ci-cd-pipeline.png`.
    3. Add a screenshot of your DynamoDB table showing dice rolls from both the Flask app and the Lambda function. Save this screenshot as `deliverables/dynamodb-entries.png`.
@@ -283,10 +303,21 @@ For this workflow, you will use SSH to run a deployment script on the EC2 instan
       - The breakdown of costs by service
       - Your description of how many requests per month the Lambda function could handle before it becomes more expensive than the EC2 instance.
    2. Save this screenshot as `deliverables/cost-analysis.png`.
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 49107bd (Submission instructions)
    
    ## Submission
 
    1. Ensure all deliverables are saved in the `deliverables/` folder. (Search for `DELIVERABLE` in this README to find them all.)
    2. Commit and push all your changes to your branch in the GitHub repository.
    3. In a web browser, navigate to your GitHub repository and create a Pull Request with `main` as the base branch and your branch as the compare branch.
+<<<<<<< HEAD
    4. Submit the Pull Request URL to your instructor for grading.
+=======
+   
+>>>>>>> 9f67a0e (Initial commit)
+=======
+   4. Submit the Pull Request URL to your instructor for grading.
+>>>>>>> 49107bd (Submission instructions)

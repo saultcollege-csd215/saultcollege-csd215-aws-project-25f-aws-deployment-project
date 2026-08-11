@@ -1,1 +1,39 @@
-name: Test
+name: Tests
+
+on:
+  push:
+    branches:
+      - LAB
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout LAB branch
+        uses: actions/checkout@v3
+        with:
+          ref: LAB
+
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: pip install -r app/requirements_flask.txt
+
+      - name: Run tests
+        run: pytest
+
+      - name: Trigger Lambda Deployment
+        uses: benc-uk/workflow-dispatch@v1
+        with:
+          workflow: lambda.yml
+          ref: LAB
+          
+      - name: Trigger EC2 Deployment
+        uses: benc-uk/workflow-dispatch@v1
+        with:
+          workflow: ec2.yml
+          ref: LAB
