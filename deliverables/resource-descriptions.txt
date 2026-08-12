@@ -1,0 +1,269 @@
+// Dynamodb describe-table json here
+
+{
+    "Table": {
+        "AttributeDefinitions": [
+            {
+                "AttributeName": "source",
+                "AttributeType": "S"
+            },
+            {
+                "AttributeName": "timestamp",
+                "AttributeType": "N"
+            }
+        ],
+        "TableName": "dice-rolls",
+        "KeySchema": [
+            {
+                "AttributeName": "source",
+                "KeyType": "HASH"
+            },
+            {
+                "AttributeName": "timestamp",
+                "KeyType": "RANGE"
+            }
+        ],
+        "TableStatus": "ACTIVE",
+        "CreationDateTime": "2026-08-12T02:05:45.740000+00:00",
+        "ProvisionedThroughput": {
+            "NumberOfDecreasesToday": 0,
+            "ReadCapacityUnits": 0,
+            "WriteCapacityUnits": 0
+        },
+        "TableSizeBytes": 0,
+        "ItemCount": 0,
+        "TableArn": "arn:aws:dynamodb:us-east-1:145049207641:table/dice-rolls",
+        "TableId": "26ac5675-c907-4f24-8613-531b09566b9a",
+        "BillingModeSummary": {
+            "BillingMode": "PAY_PER_REQUEST",
+            "LastUpdateToPayPerRequestDateTime": "2026-08-12T02:05:45.740000+00:00"
+        },
+        "DeletionProtectionEnabled": false,
+        "WarmThroughput": {
+            "ReadUnitsPerSecond": 12000,
+            "WriteUnitsPerSecond": 4000,
+            "Status": "ACTIVE"
+        }
+    }
+}
+
+// EC2 Instance describe-instances JSON here
+{
+    "Reservations": [
+        {
+            "ReservationId": "r-0efc7e653b0c77205",
+            "OwnerId": "145049207641",
+            "Groups": [],
+            "Instances": [
+                {
+                    "Architecture": "x86_64",
+                    "BlockDeviceMappings": [
+                        {
+                            "DeviceName": "/dev/xvda",
+                            "Ebs": {
+                                "AttachTime": "2026-08-12T02:25:08+00:00",
+                                "DeleteOnTermination": true,
+                                "Status": "attached",
+                                "VolumeId": "vol-0e2864200e7c8999f"
+                            }
+                        }
+                    ],
+                    "ClientToken": "19c5e979-4cf2-47ec-98b5-447e74fd9a7f",
+                    "EbsOptimized": false,
+                    "EnaSupport": true,
+                    "Hypervisor": "xen",
+                    "IamInstanceProfile": {
+                        "Arn": "arn:aws:iam::145049207641:instance-profile/csd215-instance-profile",
+                        "Id": "AIPASDRM3INMWHMMCPOHB"
+                    },
+                    "NetworkInterfaces": [
+                        {
+                            "Association": {
+                                "IpOwnerId": "amazon",
+                                "PublicDnsName": "",
+                                "PublicIp": "52.90.241.160"
+                            },
+                            "Attachment": {
+                                "AttachTime": "2026-08-12T02:25:07+00:00",
+                                "AttachmentId": "eni-attach-0e83a61dce704d3b4",
+                                "DeleteOnTermination": true,
+                                "DeviceIndex": 0,
+                                "Status": "attached",
+                                "NetworkCardIndex": 0
+                            },
+                            "Description": "",
+                            "Groups": [
+                                {
+                                    "GroupId": "sg-014c87e8e6768363c",
+                                    "GroupName": "csd215-ec2-sg"
+                                }
+                            ],
+                            "Ipv6Addresses": [],
+                            "MacAddress": "12:16:78:93:f2:e1",
+                            "NetworkInterfaceId": "eni-070e564824158b8a5",
+                            "OwnerId": "145049207641",
+                            "PrivateIpAddress": "10.0.0.248",
+                            "PrivateIpAddresses": [
+                                {
+                                    "Association": {
+                                        "IpOwnerId": "amazon",
+                                        "PublicDnsName": "",
+                                        "PublicIp": "52.90.241.160"
+                                    },
+                                    "Primary": true,
+                                    "PrivateIpAddress": "10.0.0.248"
+                                }
+                            ],
+                            "SourceDestCheck": true,
+                            "Status": "in-use",
+                            "SubnetId": "subnet-03065ecb381c6c665",
+                            "VpcId": "vpc-0080a79d3ccf15976",
+                            "InterfaceType": "interface",
+                            "Operator": {
+                                "Managed": false
+                            }
+                        }
+                    ],
+                    "RootDeviceName": "/dev/xvda",
+                    "RootDeviceType": "ebs",
+                    "SecurityGroups": [
+                        {
+                            "GroupId": "sg-014c87e8e6768363c",
+                            "GroupName": "csd215-ec2-sg"
+                        }
+                    ],
+                    "SourceDestCheck": true,
+                    "Tags": [
+                        {
+                            "Key": "Name",
+                            "Value": "csd215-flask-instance"
+                        }
+                    ],
+                    "VirtualizationType": "hvm",
+                    "CpuOptions": {
+                        "CoreCount": 1,
+                        "ThreadsPerCore": 1
+                    },
+                    "CapacityReservationSpecification": {
+                        "CapacityReservationPreference": "open"
+                    },
+                    "HibernationOptions": {
+                        "Configured": false
+                    },
+                    "MetadataOptions": {
+                        "State": "applied",
+                        "HttpTokens": "required",
+                        "HttpPutResponseHopLimit": 2,
+                        "HttpEndpoint": "enabled",
+                        "HttpProtocolIpv6": "disabled",
+                        "InstanceMetadataTags": "disabled"
+                    },
+                    "EnclaveOptions": {
+                        "Enabled": false
+                    },
+                    "BootMode": "uefi-preferred",
+                    "PlatformDetails": "Linux/UNIX",
+                    "UsageOperation": "RunInstances",
+                    "UsageOperationUpdateTime": "2026-08-12T02:25:07+00:00",
+                    "PrivateDnsNameOptions": {
+                        "HostnameType": "ip-name",
+                        "EnableResourceNameDnsARecord": false,
+                        "EnableResourceNameDnsAAAARecord": false
+                    },
+                    "MaintenanceOptions": {
+                        "AutoRecovery": "default"
+                    },
+                    "CurrentInstanceBootMode": "legacy-bios",
+                    "NetworkPerformanceOptions": {
+                        "BandwidthWeighting": "default"
+                    },
+                    "Operator": {
+                        "Managed": false
+                    },
+                    "InstanceId": "i-048c1aa4c5175af7f",
+                    "ImageId": "ami-07a5b367e8dc8bd92",
+                    "State": {
+                        "Code": 16,
+                        "Name": "running"
+                    },
+                    "PrivateDnsName": "ip-10-0-0-248.ec2.internal",
+                    "PublicDnsName": "",
+                    "StateTransitionReason": "",
+                    "KeyName": "csd215-keypair",
+                    "AmiLaunchIndex": 0,
+                    "ProductCodes": [],
+                    "InstanceType": "t2.nano",
+                    "LaunchTime": "2026-08-12T02:25:07+00:00",
+                    "Placement": {
+                        "GroupName": "",
+                        "Tenancy": "default",
+                        "AvailabilityZone": "us-east-1a"
+                    },
+                    "Monitoring": {
+                        "State": "disabled"
+                    },
+                    "SubnetId": "subnet-03065ecb381c6c665",
+                    "VpcId": "vpc-0080a79d3ccf15976",
+                    "PrivateIpAddress": "10.0.0.248",
+                    "PublicIpAddress": "52.90.241.160"
+                }
+            ]
+        }
+    ]
+}
+
+// Lambda get-function JSON here
+{
+    "Configuration": {
+        "FunctionName": "csd215-lambda",
+        "FunctionArn": "arn:aws:lambda:us-east-1:145049207641:function:csd215-lambda",
+        "Runtime": "python3.9",
+        "Role": "arn:aws:iam::145049207641:role/LabRole",
+        "Handler": "lambda_app.main",
+        "CodeSize": 2762,
+        "Description": "",
+        "Timeout": 3,
+        "MemorySize": 128,
+        "LastModified": "2026-08-12T02:53:56.000+0000",
+        "CodeSha256": "o+1CuJ8QAM7NPTIF1w0FeHNJZfBcBz6zEJDYDV4tSro=",
+        "Version": "$LATEST",
+        "VpcConfig": {
+            "SubnetIds": [
+                "subnet-0f42b9f8543fa9731"
+            ],
+            "SecurityGroupIds": [
+                "sg-0ace0aa2ae3c2ee99"
+            ],
+            "VpcId": "vpc-0080a79d3ccf15976",
+            "Ipv6AllowedForDualStack": false
+        },
+        "TracingConfig": {
+            "Mode": "PassThrough"
+        },
+        "RevisionId": "1882c4a6-3fa2-4f3e-8eec-c733999124b9",
+        "State": "Active",
+        "LastUpdateStatus": "Successful",
+        "PackageType": "Zip",
+        "Architectures": [
+            "x86_64"
+        ],
+        "EphemeralStorage": {
+            "Size": 512
+        },
+        "SnapStart": {
+            "ApplyOn": "None",
+            "OptimizationStatus": "Off"
+        },
+        "RuntimeVersionConfig": {
+            "RuntimeVersionArn": "arn:aws:lambda:us-east-1::runtime:b46f7bc0f3da8071d1b824471f2c69c8766b756b827eb0455d2118c622ae7bcf"
+        },
+        "LoggingConfig": {
+            "LogFormat": "Text",
+            "LogGroup": "/aws/lambda/csd215-lambda"
+        }
+    },
+    "Code": {
+        "RepositoryType": "S3",
+        "Location": "https://prod-iad-c1-djusa-tasks.s3.us-east-1.amazonaws.com/snapshots/145049207641/csd215-lambda-75aebe4d-4c21-4717-971a-70573fc213ce?versionId=l75B.gyI9EutfsRwr7xrCMUPiaNlhtFy&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEPT%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLWVhc3QtMSJHMEUCIBmJ4Hxq7gxJWyfrJl5e6krB%2BUGQjPlNXFg60PltslJOAiEA6AIewLZYQ40F6fB67jsnBYBuA8YppPafFioHOQI0SFsqlAIIvf%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARAEGgw0NzkyMzMwMjUzNzkiDB5zpDIL7MCZcvx1ziroAWNaWZ3t4ke05kdq5QgneOGpbED9gQndFGcXrjvyMNRJnkkqM57%2FvojTT8psQ2%2FED6CaFaPIzOKmwoRr7A29qXECXiWCL2y2EZDhebgu344my%2BbvePq9OLE7P9rSOX4O3OLAMNAMo5fFTNXX4KKPsvUSwonmtPfHsKUdxiJFKd0aS%2F%2B4QtMjC9%2F19jY7dnvN%2F7Gvwl0kOBA0Nl71rN7JPDOnem8m44REq4rR9pGt99qnj%2BhOwrP%2FGzH9LPwvSI6Wu8%2F6pGJxvD%2BbL7VQizeVXq00B7D77eYBRtXVrCN6J7dsY47gBg%2F3T10w5%2Fft0wY6jQGyFjaCow%2BcqyLMQp1Xz5GqyheUJ3y7Ru1LQeT8ozU%2By3P2TWchJ6R%2FBMtZtG1siczhudpAC314lFoJkKOU4bz2ssUrqR9D%2F6TK0uHDsy7fD1gYYPSMed4i1iy4VFH7WqPiVgU4Zxq34um3hD9rjcQpUOy4wFETQDq0bzFZ54l%2Bim5DDDFvqPdfk3ASeII%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20260812T025526Z&X-Amz-SignedHeaders=host&X-Amz-Expires=599&X-Amz-Credential=ASIAW7FEDUVRUPZLPBEB%2F20260812%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=d64f22576785a36c0558e74520d31b035372ed51afec9c715d1df9bb07f6c1a3"
+    }
+}
